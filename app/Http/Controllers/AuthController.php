@@ -12,7 +12,7 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 class AuthController extends Controller
 {
     /**
-     * 
+     * @param RegisterFormRequest $request
      */
     public function signUp(RegisterFormRequest $request)
     {
@@ -24,7 +24,8 @@ class AuthController extends Controller
     }
 
     /**
-     *
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function signIn(Request $request)
     {
@@ -47,8 +48,8 @@ class AuthController extends Controller
         }
 
         return response()->json(compact('token'));
-        
 
-    } 
+    }
+
 
 }

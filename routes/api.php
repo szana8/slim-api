@@ -26,6 +26,8 @@ Route::group(['middleware' => ['api'], 'prefix' => 'v1'], function () {
     // Route group for the APIs which needs authentication
     Route::group(['middleware' => 'jwt.auth'], function () {
 
+        Route::get('/user', 'UserController@index');
+
     });
 
 });
