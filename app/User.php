@@ -2,11 +2,14 @@
 
 namespace App;
 
+use App\Eloquent\Admin\Profile;
 use Illuminate\Notifications\Notifiable;
+use Laratrust\Traits\LaratrustUserTrait;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
+    use LaratrustUserTrait;
     use Notifiable;
 
     /**
@@ -24,11 +27,33 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
+        'password'
     ];
 
-    public function avatar()
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function profile()
     {
-        return "http://gavatar.com/avatar/";
+        return $this->hasOne(Profile::class);
+    }
+
+    /**
+     * Search scope for the Role model.
+     *
+     * @param $query
+     * @param $keyword
+     * @return mixed
+     */
+    public function scopeSearchByKeyword($query, $keyword)
+    {
+        if ($keyword != '') {
+            return $query->where(function ($query) use ($keyword) {
+                $query->where('name', 'LIKE', "%$keyword%")
+                    ->orWhere('email', 'LIKE', "%$keyword%");
+            });
+        }
+
+        return $query;
     }
 }
