@@ -1,8 +1,7 @@
 <?php
-namespace App\Repositories\Contracts\Issue;
 
+namespace App\Repositories\Contracts\Issue;
 
 interface PriorityRepository
 {
-
 }

@@ -37,6 +37,7 @@ class EagerLoadWithCriteria implements CriterionInterface
      * Apply the eager load.
      *
      * @param $entity
+     *
      * @return mixed
      */
     public function apply($entity)

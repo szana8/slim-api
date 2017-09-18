@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issue\TypeSchema;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed issueTypes
@@ -36,8 +36,8 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required',
-            'description' => 'required',
+            'name'         => 'required',
+            'description'  => 'required',
             'default_type' => 'required',
         ];
     }

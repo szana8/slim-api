@@ -1,8 +1,6 @@
 <?php
 
-
 namespace App\Repositories\Eloquent\Issue;
-
 
 use App\Eloquent\Issue\Screens;
 use App\Repositories\Contracts\Issue\ScreenRepository;

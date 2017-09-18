@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\GeneralSetting;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed name

@@ -1,8 +1,8 @@
 <?php
 
-use Illuminate\Support\Facades\Schema;
-use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
 
 class CreateMenuTables extends Migration
 {
@@ -26,7 +26,7 @@ class CreateMenuTables extends Migration
         Schema::create('menu_items', function (Blueprint $table) {
             $table->increments('id');
             $table->unsignedInteger('menu_id');
-            $table->string('name',100)->unique();
+            $table->string('name', 100)->unique();
             $table->string('link')->nullable()->default(null);
             $table->text('description')->nullable();
             $table->integer('parent_id')->nullable()->default(null);

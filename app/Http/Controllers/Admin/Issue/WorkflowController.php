@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Workflow\CreateRequest;
 use App\Http\Requests\Issue\Workflow\UpdateRequest;
 use App\Repositories\Contracts\Issue\WorkflowRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class WorkflowController extends Controller
@@ -32,6 +31,7 @@ class WorkflowController extends Controller
 
     /**
      * WorkflowController constructor.
+     *
      * @param WorkflowRepository $workflowRepository
      */
     public function __construct(WorkflowRepository $workflowRepository)
@@ -63,6 +63,7 @@ class WorkflowController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -75,7 +76,8 @@ class WorkflowController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -86,7 +88,8 @@ class WorkflowController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -102,20 +105,22 @@ class WorkflowController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
     {
         $this->workflowRepository->find($id)->update($request->toArray());
 
-        return back()->with('message', $request->name . ' workflow type has been successfully updated!');
+        return back()->with('message', $request->name.' workflow type has been successfully updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

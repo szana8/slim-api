@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:issue_resolutions'
+            'name' => 'required|unique:issue_resolutions',
         ];
     }
 }

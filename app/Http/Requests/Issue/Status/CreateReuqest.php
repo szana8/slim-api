@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @property mixed name
  */
-class CreateRequest extends FormRequest
+class CreateReuqest extends FormRequest
 {
     /**
      * Permissions which needs to access the current action.
@@ -35,8 +35,8 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:issue_statuses',
-            'category' => 'required'
+            'name'     => 'required|unique:issue_statuses',
+            'category' => 'required',
         ];
     }
 }

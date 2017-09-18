@@ -13,7 +13,6 @@
 
 Route::middleware('api')->prefix('v1')->group(function () {
 
-
     // Sign up route
     Route::post('auth/signup', 'Auth\AuthController@signUp');
 
@@ -30,30 +29,30 @@ Route::middleware('api')->prefix('v1')->group(function () {
 
         // Users Routes
         Route::resource('user', 'UserController', ['except' => [
-            'create', 'edit'
+            'create', 'edit',
         ]]);
 
         // Roles Routes
         Route::resource('role', 'RoleController', ['except' => [
-            'create', 'edit'
+            'create', 'edit',
         ]]);
 
         // Permission Routes
         Route::resource('permission', 'PermissionController', ['except' => [
-            'create', 'edit'
+            'create', 'edit',
         ]]);
 
         // Team Routes
         Route::resource('team', 'TeamController', [
             'except' => [
-                'create', 'edit'
-        ]]);
+                'create', 'edit',
+        ], ]);
 
         // Team Role Routes
         Route::resource('team-role', 'TeamRolesController', [
             'except' => [
-                'create', 'edit'
-        ]]);
+                'create', 'edit',
+        ], ]);
 
         Route::get('team-role/{user}/{team}', 'TeamRolesController@show');
 
@@ -230,6 +229,5 @@ Route::middleware('api')->prefix('v1')->group(function () {
 //            Route::delete('priority/{id}',                  'PriorityController@destroy')->name('destroyPriority');
 //
 //        });
-
     }); //End Auth Middleware
 });

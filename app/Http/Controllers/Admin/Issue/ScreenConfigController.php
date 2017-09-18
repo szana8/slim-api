@@ -21,7 +21,8 @@ class ScreenConfigController extends Controller
 
     /**
      * ScreenConfigController constructor.
-     * @param CustomFieldRepository $customFieldRepository
+     *
+     * @param CustomFieldRepository  $customFieldRepository
      * @param ScreenConfigRepository $screenConfigRepository
      */
     public function __construct(CustomFieldRepository $customFieldRepository, ScreenConfigRepository $screenConfigRepository)
@@ -34,6 +35,7 @@ class ScreenConfigController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -46,7 +48,8 @@ class ScreenConfigController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

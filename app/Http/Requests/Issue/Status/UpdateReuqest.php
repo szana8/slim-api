@@ -5,7 +5,7 @@ namespace App\Http\Requests\Issue\Status;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
 
-class UpdateRequest extends FormRequest
+class UpdateReuqest extends FormRequest
 {
     /**
      * Permissions which needs to access the current action.
@@ -34,7 +34,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required',
             Rule::unique('issue_statuses')->ignore(request()->name),
-            'category' => 'required'
+            'category' => 'required',
         ];
     }
 }

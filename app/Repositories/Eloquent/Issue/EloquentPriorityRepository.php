@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Repositories\Eloquent\Issue;
 
 use App\Eloquent\Issue\Priority;

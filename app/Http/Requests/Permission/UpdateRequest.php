@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Permission;
 
-use Illuminate\Validation\Rule;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 /**
  * @property mixed display_name

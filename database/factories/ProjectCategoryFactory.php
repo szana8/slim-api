@@ -1,7 +1,7 @@
 <?php
 
-use Faker\Generator as Faker;
 use App\Eloquent\ProjectCategories;
+use Faker\Generator as Faker;
 
 $factory->define(ProjectCategories::class, function (Faker $faker) {
     return [

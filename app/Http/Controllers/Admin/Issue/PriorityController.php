@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Priority\AccessRequest;
 use App\Http\Requests\Issue\Priority\CreateRequest;
 use App\Http\Requests\Issue\Priority\DestroyRequest;
 use App\Http\Requests\Issue\Priority\UpdateRequest;
 use App\Repositories\Contracts\Issue\PriorityRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class PriorityController extends Controller
@@ -36,6 +35,7 @@ class PriorityController extends Controller
 
     /**
      * PriorityController constructor.
+     *
      * @param PriorityRepository $priorityRepository
      */
     public function __construct(PriorityRepository $priorityRepository)
@@ -47,6 +47,7 @@ class PriorityController extends Controller
      * Display a listing of the resource.
      *
      * @param AccessRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(AccessRequest $request)
@@ -72,6 +73,7 @@ class PriorityController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -84,7 +86,8 @@ class PriorityController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -100,7 +103,8 @@ class PriorityController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -114,7 +118,8 @@ class PriorityController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param  int $id
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

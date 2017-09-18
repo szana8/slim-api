@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent\Issue;
 
 use App\Eloquent\Admin\Issue\IssueTypeSchema;
-use App\Repositories\RepositoryAbstract;
 use App\Repositories\Contracts\Issue\TypeSchemeRepository;
+use App\Repositories\RepositoryAbstract;
 
 class EloquentTypeSchemeRepository extends RepositoryAbstract implements TypeSchemeRepository
 {

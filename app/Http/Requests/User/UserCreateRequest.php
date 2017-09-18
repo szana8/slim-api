@@ -6,7 +6,6 @@ use Illuminate\Foundation\Http\FormRequest;
 
 class UserCreateRequest extends FormRequest
 {
-
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,8 +24,8 @@ class UserCreateRequest extends FormRequest
     public function rules()
     {
         return array_merge([
-            'name'  => 'required',
-            'email' => 'required|unique:users',
+            'name'     => 'required',
+            'email'    => 'required|unique:users',
             'password' => 'required',
         ]);
     }

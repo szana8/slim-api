@@ -1,9 +1,9 @@
 <?php
 
-use App\User;
-use App\Eloquent\Admin\Role;
-use Illuminate\Database\Seeder;
 use App\Eloquent\Admin\Permission;
+use App\Eloquent\Admin\Role;
+use App\User;
+use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
 class LaratrustSeeder extends Seeder
@@ -47,7 +47,7 @@ class LaratrustSeeder extends Seeder
 
                     $this->command->info('Creating Permission to '.$permissionValue.' for '.$module);
 
-                    if (! $role->hasPermission($permission->name)) {
+                    if (!$role->hasPermission($permission->name)) {
                         $role->attachPermission($permission);
                     } else {
                         $this->command->info($key.': '.$p.' '.$permissionValue.' already exist');
@@ -66,7 +66,7 @@ class LaratrustSeeder extends Seeder
         }
 
         // creating user with permissions
-        if (! empty($userPermission)) {
+        if (!empty($userPermission)) {
             foreach ($userPermission as $key => $modules) {
                 foreach ($modules as $module => $value) {
                     $permissions = explode(',', $value);
@@ -87,7 +87,7 @@ class LaratrustSeeder extends Seeder
 
                         $this->command->info('Creating Permission to '.$permissionValue.' for '.$module);
 
-                        if (! $user->hasPermission($permission->name)) {
+                        if (!$user->hasPermission($permission->name)) {
                             $user->attachPermission($permission);
                         } else {
                             $this->command->info($key.': '.$p.' '.$permissionValue.' already exist');

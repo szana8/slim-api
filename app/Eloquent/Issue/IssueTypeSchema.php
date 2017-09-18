@@ -34,6 +34,7 @@ class IssueTypeSchema extends Model
 
     /**
      * @param array $issueTypes
+     *
      * @return array
      */
     public function syncIssueTypes(array $issueTypes)
@@ -46,6 +47,7 @@ class IssueTypeSchema extends Model
      *
      * @param $query
      * @param $keyword
+     *
      * @return mixed
      */
     public function scopeSearchByKeyword($query, $keyword)

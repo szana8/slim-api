@@ -1,8 +1,8 @@
 <?php
 
 use App\Eloquent\Admin\Menu;
-use Illuminate\Database\Seeder;
 use App\Eloquent\Admin\MenuItem;
+use Illuminate\Database\Seeder;
 
 class MenuSeeder extends Seeder
 {
@@ -57,8 +57,8 @@ class MenuSeeder extends Seeder
 
         ],
         [
-            'menu_id'   =>  1,
-            'parent_id' =>  5,
+            'menu_id'   => 1,
+            'parent_id' => 5,
             'name'      => 'View All Projects',
             'link'      => 'projects',
             'sequence'  => 10,
