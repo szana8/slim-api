@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\Admin\Issue\IssueResolution;
 use Illuminate\Database\Seeder;
+use App\Eloquent\Admin\Issue\IssueResolution;
 
 class IssueResolutionSeeder extends Seeder
 {

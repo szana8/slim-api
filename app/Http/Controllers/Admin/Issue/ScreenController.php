@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Screen\AccessRequest;
 use App\Http\Requests\Issue\Screen\CreateRequest;
-use App\Http\Requests\Issue\Screen\DestroyRequest;
 use App\Http\Requests\Issue\Screen\UpdateRequest;
+use App\Http\Requests\Issue\Screen\DestroyRequest;
 use App\Repositories\Contracts\Issue\ScreenRepository;
-use Illuminate\Support\Facades\Auth;
 
 class ScreenController extends Controller
 {

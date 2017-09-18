@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Priority\AccessRequest;
 use App\Http\Requests\Issue\Priority\CreateRequest;
-use App\Http\Requests\Issue\Priority\DestroyRequest;
 use App\Http\Requests\Issue\Priority\UpdateRequest;
+use App\Http\Requests\Issue\Priority\DestroyRequest;
 use App\Repositories\Contracts\Issue\PriorityRepository;
-use Illuminate\Support\Facades\Auth;
 
 class PriorityController extends Controller
 {

@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\Admin\Role;
 use App\User;
+use App\Eloquent\Admin\Role;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder

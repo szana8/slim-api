@@ -2,8 +2,8 @@
 
 namespace slim\ItemBuilder\Implementations;
 
-use slim\ItemBuilder\Contracts\ItemBuilderAbstract;
 use slim\ItemBuilder\Contracts\ItemInterface;
+use slim\ItemBuilder\Contracts\ItemBuilderAbstract;
 
 class Select extends ItemBuilderAbstract implements ItemInterface
 {

@@ -2,8 +2,8 @@
 
 namespace App\Eloquent\Issue;
 
-use App\Eloquent\Admin\Issue\CustomField;
 use Illuminate\Database\Eloquent\Model;
+use App\Eloquent\Admin\Issue\CustomField;
 
 class ScreenConfig extends Model
 {

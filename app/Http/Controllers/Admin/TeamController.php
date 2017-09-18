@@ -5,12 +5,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Team\AccessRequest;
 use App\Http\Requests\Team\CreateRequest;
-use App\Http\Requests\Team\DestroyRequest;
 use App\Http\Requests\Team\UpdateRequest;
-use App\Repositories\Contracts\PermissionRepository;
+use App\Http\Requests\Team\DestroyRequest;
+use App\Transformers\ExceptionTransformer;
 use App\Repositories\Contracts\TeamRepository;
 use App\Transformers\Authorization\TeamTransformer;
-use App\Transformers\ExceptionTransformer;
+use App\Repositories\Contracts\PermissionRepository;
 
 class TeamController extends Controller
 {

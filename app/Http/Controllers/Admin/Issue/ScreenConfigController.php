@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Http\Requests\Issue\ScreenConfig\CreateRequest;
 use App\Repositories\Contracts\Issue\CustomFieldRepository;
 use App\Repositories\Contracts\Issue\ScreenConfigRepository;
-use App\Repositories\Eloquent\Criteria\EagerLoad;
 
 class ScreenConfigController extends Controller
 {

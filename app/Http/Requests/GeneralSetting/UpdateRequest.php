@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\GeneralSetting;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed name

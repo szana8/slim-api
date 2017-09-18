@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Eloquent\Admin\Role;
-use App\Repositories\Contracts\TeamRolesRepository;
 use App\Repositories\RepositoryAbstract;
+use App\Repositories\Contracts\TeamRolesRepository;
 
 class EloquentTeamRolesRepository extends RepositoryAbstract implements TeamRolesRepository
 {

@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
-use App\Http\Controllers\Controller as HttpController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller as HttpController;
 
 class Controller extends HttpController
 {

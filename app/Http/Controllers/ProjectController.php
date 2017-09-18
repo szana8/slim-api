@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Repositories\Contracts\Issue\ProjectRepository;
 use App\Repositories\Eloquent\Issue\Criteria\EagerLoad;
-use Illuminate\Http\Request;
 
 class ProjectController extends Controller
 {

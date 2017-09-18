@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Eloquent\Issue;
 
+use App\Repositories\RepositoryAbstract;
 use App\Eloquent\Admin\Issue\IssueStatus;
 use App\Repositories\Contracts\Issue\StatusRepository;
-use App\Repositories\RepositoryAbstract;
 
 class EloquentStatusRepository extends RepositoryAbstract implements StatusRepository
 {

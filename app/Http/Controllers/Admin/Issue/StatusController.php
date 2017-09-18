@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Status\AccessRequest;
 use App\Http\Requests\Issue\Status\CreateRequest;
-use App\Http\Requests\Issue\Status\DestroyRequest;
 use App\Http\Requests\Issue\Status\UpdateRequest;
+use App\Http\Requests\Issue\Status\DestroyRequest;
 use App\Repositories\Contracts\Issue\StatusRepository;
-use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
 {

@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Eloquent\Admin\Permission;
-use App\Repositories\Contracts\PermissionRepository;
 use App\Repositories\RepositoryAbstract;
+use App\Repositories\Contracts\PermissionRepository;
 
 class EloquentPermissionRepository extends RepositoryAbstract implements PermissionRepository
 {

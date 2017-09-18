@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Transformers\UserTransformer;
+use App\Transformers\ExceptionTransformer;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserUpdateRequest;
 use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
-use App\Transformers\ExceptionTransformer;
-use App\Transformers\UserTransformer;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\Request;
 
 class UserController extends Controller
 {

@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Resolution\AccessRequest;
 use App\Http\Requests\Issue\Resolution\CreateRequest;
-use App\Http\Requests\Issue\Resolution\DestroyRequest;
 use App\Http\Requests\Issue\Resolution\UpdateRequest;
+use App\Http\Requests\Issue\Resolution\DestroyRequest;
 use App\Repositories\Contracts\Issue\ResolutionRepository;
-use Illuminate\Support\Facades\Auth;
 
 class ResolutionController extends Controller
 {

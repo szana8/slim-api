@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Issue\CustomField\CreateRequest;
-use App\Http\Requests\Issue\CustomField\DestroyRequest;
-use App\Http\Requests\Issue\CustomField\UpdateRequest;
-use App\Repositories\Contracts\Issue\CustomFieldRepository;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\Issue\CustomField\CreateRequest;
+use App\Http\Requests\Issue\CustomField\UpdateRequest;
+use App\Http\Requests\Issue\CustomField\DestroyRequest;
+use App\Repositories\Contracts\Issue\CustomFieldRepository;
 
 class CustomFieldController extends Controller
 {
