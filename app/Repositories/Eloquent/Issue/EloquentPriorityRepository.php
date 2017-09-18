@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent\Issue;
 
 use App\Eloquent\Issue\Priority;
-use App\Repositories\Contracts\Issue\PriorityRepository;
 use App\Repositories\RepositoryAbstract;
+use App\Repositories\Contracts\Issue\PriorityRepository;
 
 class EloquentPriorityRepository extends RepositoryAbstract implements PriorityRepository
 {

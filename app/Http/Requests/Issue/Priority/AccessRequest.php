@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issue\Priority;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed priority

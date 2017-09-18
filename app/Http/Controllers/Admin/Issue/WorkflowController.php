@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Workflow\CreateRequest;
 use App\Http\Requests\Issue\Workflow\UpdateRequest;
 use App\Repositories\Contracts\Issue\WorkflowRepository;
-use Illuminate\Support\Facades\Auth;
 
 class WorkflowController extends Controller
 {

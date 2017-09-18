@@ -2,9 +2,9 @@
 
 namespace App\Transformers\Authorization;
 
+use App\User;
 use App\Eloquent\Admin\Role;
 use App\Transformers\UserTransformer;
-use App\User;
 use League\Fractal\TransformerAbstract;
 
 class TeamRoleTransformer extends TransformerAbstract

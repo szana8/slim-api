@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Repositories\Eloquent\Criteria\EagerLoad;
+use App\Repositories\Contracts\Issue\TypeRepository;
 use App\Http\Requests\Issue\TypeSchema\AccessRequest;
 use App\Http\Requests\Issue\TypeSchema\CreateRequest;
-use App\Http\Requests\Issue\TypeSchema\DestroyRequest;
 use App\Http\Requests\Issue\TypeSchema\UpdateRequest;
-use App\Repositories\Contracts\Issue\TypeRepository;
+use App\Http\Requests\Issue\TypeSchema\DestroyRequest;
 use App\Repositories\Contracts\Issue\TypeSchemeRepository;
-use App\Repositories\Eloquent\Criteria\EagerLoad;
-use Illuminate\Support\Facades\Auth;
 
 class TypeSchemaController extends Controller
 {

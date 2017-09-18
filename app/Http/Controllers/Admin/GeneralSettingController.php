@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Eloquent\Admin\GeneralSetting;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use App\Eloquent\Admin\GeneralSetting;
 use App\Http\Requests\GeneralSetting\AccessRequest;
 use App\Http\Requests\GeneralSetting\CreateRequest;
-use App\Http\Requests\GeneralSetting\DestroyRequest;
 use App\Http\Requests\GeneralSetting\UpdateRequest;
+use App\Http\Requests\GeneralSetting\DestroyRequest;
 use App\Repositories\Contracts\GeneralSettingsRepository;
-use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class GeneralSettingController extends Controller

@@ -1,8 +1,8 @@
 <?php
 
 use App\Eloquent\Admin\Menu;
-use App\Eloquent\Admin\MenuItem;
 use Illuminate\Database\Seeder;
+use App\Eloquent\Admin\MenuItem;
 
 class MenuSeeder extends Seeder
 {

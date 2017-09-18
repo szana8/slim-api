@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Issue\StatusRepository;
 use App\Repositories\Contracts\Issue\WorkflowRepository;
-use Illuminate\Http\Request;
 
 class WorkflowConfigureController extends Controller
 {

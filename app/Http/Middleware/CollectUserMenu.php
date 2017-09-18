@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use App\Eloquent\Admin\MenuItem;
 use Closure;
-use Illuminate\Support\Facades\Auth;
 use Lavary\Menu\Menu;
+use App\Eloquent\Admin\MenuItem;
+use Illuminate\Support\Facades\Auth;
 
 class CollectUserMenu
 {

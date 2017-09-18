@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent\Issue;
 
 use App\Eloquent\Issue\ScreenConfig;
-use App\Repositories\Contracts\Issue\ScreenConfigRepository;
 use App\Repositories\RepositoryAbstract;
+use App\Repositories\Contracts\Issue\ScreenConfigRepository;
 
 class EloquentScreenConfigRepository extends RepositoryAbstract implements ScreenConfigRepository
 {

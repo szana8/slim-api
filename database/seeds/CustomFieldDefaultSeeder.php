@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\Admin\Issue\CustomField;
 use Illuminate\Database\Seeder;
+use App\Eloquent\Admin\Issue\CustomField;
 
 class CustomFieldDefaultSeeder extends Seeder
 {

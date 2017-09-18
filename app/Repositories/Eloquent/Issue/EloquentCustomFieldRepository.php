@@ -2,9 +2,9 @@
 
 namespace App\Repositories\Eloquent\Issue;
 
+use App\Repositories\RepositoryAbstract;
 use App\Eloquent\Admin\Issue\CustomField;
 use App\Repositories\Contracts\Issue\CustomFieldRepository;
-use App\Repositories\RepositoryAbstract;
 
 class EloquentCustomFieldRepository extends RepositoryAbstract implements CustomFieldRepository
 {

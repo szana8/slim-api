@@ -2,9 +2,9 @@
 
 namespace App\Repositories;
 
-use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Criteria\CriteriaInterface;
 use App\Repositories\Exceptions\NoEntityDefined;
+use App\Repositories\Contracts\RepositoryInterface;
 
 abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterface
 {
@@ -241,7 +241,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      */
     protected function resolveEntity()
     {
-        if (!method_exists($this, 'entity')) {
+        if (! method_exists($this, 'entity')) {
             throw new NoEntityDefined('No entity defined');
         }
 

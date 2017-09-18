@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Eloquent\Admin\Role;
-use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\RepositoryAbstract;
+use App\Repositories\Contracts\RoleRepository;
 
 class EloquentRoleRepository extends RepositoryAbstract implements RoleRepository
 {

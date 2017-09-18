@@ -2,10 +2,10 @@
 
 namespace App\Eloquent;
 
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\Eloquent\ProjectLeadTrait;
 use App\Traits\Eloquent\ProjectCategoryTrait;
 use App\Traits\Eloquent\ProjectDefaultAssigneeTrait;
-use App\Traits\Eloquent\ProjectLeadTrait;
-use Illuminate\Database\Eloquent\Model;
 
 class Project extends Model
 {

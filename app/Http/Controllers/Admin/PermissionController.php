@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Transformers\ExceptionTransformer;
 use App\Http\Requests\Permission\AccessRequest;
 use App\Http\Requests\Permission\CreateRequest;
-use App\Http\Requests\Permission\DestroyRequest;
 use App\Http\Requests\Permission\UpdateRequest;
-use App\Repositories\Contracts\PermissionRepository;
+use App\Http\Requests\Permission\DestroyRequest;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
+use App\Repositories\Contracts\PermissionRepository;
 use App\Transformers\Authorization\PermissionTransformer;
-use App\Transformers\ExceptionTransformer;
 
 class PermissionController extends Controller
 {

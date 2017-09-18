@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\ProjectCategories;
 use Illuminate\Database\Seeder;
+use App\Eloquent\ProjectCategories;
 
 class ProjectCategorySeeder extends Seeder
 {

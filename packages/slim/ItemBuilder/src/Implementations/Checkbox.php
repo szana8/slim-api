@@ -2,8 +2,8 @@
 
 namespace slim\ItemBuilder\Implementations;
 
-use slim\ItemBuilder\Contracts\ItemBuilderAbstract;
 use slim\ItemBuilder\Contracts\ItemInterface;
+use slim\ItemBuilder\Contracts\ItemBuilderAbstract;
 
 class Checkbox extends ItemBuilderAbstract implements ItemInterface
 {

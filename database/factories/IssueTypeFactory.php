@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\Admin\Issue\IssueType;
 use Faker\Generator as Faker;
+use App\Eloquent\Admin\Issue\IssueType;
 
 $factory->define(IssueType::class, function (Faker $faker) {
     return [

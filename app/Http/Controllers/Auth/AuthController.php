@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use JWTAuth;
+use Carbon\Carbon;
+use App\Models\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterFormRequest;
-use App\Models\User;
-use Carbon\Carbon;
-use Illuminate\Http\Request;
-use JWTAuth;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
@@ -42,7 +42,7 @@ class AuthController extends Controller
             ], 500);
         }
 
-        if (!$token) {
+        if (! $token) {
             return response()->json([
                 'error' => 'Could not authenticate',
             ], 401);

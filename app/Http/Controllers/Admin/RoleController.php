@@ -3,16 +3,16 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Eloquent\Admin\Role;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Role\AccessRequest;
 use App\Http\Requests\Role\CreateRequest;
-use App\Http\Requests\Role\DestroyRequest;
 use App\Http\Requests\Role\UpdateRequest;
-use App\Repositories\Contracts\PermissionRepository;
+use App\Http\Requests\Role\DestroyRequest;
 use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Transformers\Authorization\RoleTransformer;
-use Illuminate\Http\Request;
+use App\Repositories\Contracts\PermissionRepository;
 
 class RoleController extends Controller
 {

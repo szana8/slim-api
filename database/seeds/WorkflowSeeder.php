@@ -1,7 +1,7 @@
 <?php
 
-use App\Eloquent\Issue\Workflow;
 use Illuminate\Database\Seeder;
+use App\Eloquent\Issue\Workflow;
 
 class WorkflowSeeder extends Seeder
 {

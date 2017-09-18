@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issue\ScreenConfig;
 
-use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\FormRequest;
 
 class DestroyRequest extends FormRequest
 {

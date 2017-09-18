@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Type\AccessRequest;
 use App\Http\Requests\Issue\Type\CreateRequest;
-use App\Http\Requests\Issue\Type\DestroyRequest;
 use App\Http\Requests\Issue\Type\UpdateRequest;
+use App\Http\Requests\Issue\Type\DestroyRequest;
 use App\Repositories\Contracts\Issue\TypeRepository;
-use Illuminate\Support\Facades\Auth;
 
 class TypeController extends Controller
 {
