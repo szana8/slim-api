@@ -26,6 +26,7 @@ abstract class ItemBuilderAbstract
 
     /**
      * @param $array
+     *
      * @return \stdClass
      */
     protected static function array_to_object($array)

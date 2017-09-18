@@ -36,7 +36,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:custom_fields',
-            'type' => 'required'
+            'type' => 'required',
         ];
     }
 }

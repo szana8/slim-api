@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\TeamRole;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed user

@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Eloquent\Admin\Team;
-use App\Repositories\RepositoryAbstract;
 use App\Repositories\Contracts\TeamRepository;
+use App\Repositories\RepositoryAbstract;
 
 class EloquentTeamRepository extends RepositoryAbstract implements TeamRepository
 {

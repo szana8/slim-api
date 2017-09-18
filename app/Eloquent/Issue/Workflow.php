@@ -15,5 +15,4 @@ class Workflow extends Model
      * @var array
      */
     protected $attributes = ['descriptor' => '{"class": "go.GraphLinksModel", "linkDataArray": [], "nodeDataArray": [], "linkToPortIdProperty": "toPort", "linkFromPortIdProperty": "fromPort"}'];
-
 }

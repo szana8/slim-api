@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @property mixed name
  */
-class DestroyRequest extends FormRequest
+class DestroyReuqest extends FormRequest
 {
     /**
      * Permissions which needs to access the current action.

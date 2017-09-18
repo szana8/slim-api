@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issue\Type;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\Rule;
 
 /**
@@ -38,9 +38,9 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required',
             Rule::unique('issue_types')->ignore(request()->name),
-            'type' => 'required',
+            'type'        => 'required',
             'description' => 'required',
-            'icon' => 'required',
+            'icon'        => 'required',
         ];
     }
 }

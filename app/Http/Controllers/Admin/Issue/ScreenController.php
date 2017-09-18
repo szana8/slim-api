@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Screen\AccessRequest;
 use App\Http\Requests\Issue\Screen\CreateRequest;
 use App\Http\Requests\Issue\Screen\DestroyRequest;
 use App\Http\Requests\Issue\Screen\UpdateRequest;
 use App\Repositories\Contracts\Issue\ScreenRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class ScreenController extends Controller
@@ -34,6 +33,7 @@ class ScreenController extends Controller
 
     /**
      * ScreenController constructor.
+     *
      * @param ScreenRepository $screenRepository
      */
     public function __construct(ScreenRepository $screenRepository)
@@ -45,6 +45,7 @@ class ScreenController extends Controller
      * Display a listing of the resource.
      *
      * @param AccessRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(AccessRequest $request)
@@ -70,6 +71,7 @@ class ScreenController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -82,7 +84,8 @@ class ScreenController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,7 +101,8 @@ class ScreenController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -112,7 +116,8 @@ class ScreenController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param  int $id
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

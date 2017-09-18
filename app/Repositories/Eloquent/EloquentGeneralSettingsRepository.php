@@ -3,8 +3,8 @@
 namespace App\Repositories\Eloquent;
 
 use App\Eloquent\Admin\GeneralSetting;
-use App\Repositories\RepositoryAbstract;
 use App\Repositories\Contracts\GeneralSettingsRepository;
+use App\Repositories\RepositoryAbstract;
 
 class EloquentGeneralSettingsRepository extends RepositoryAbstract implements GeneralSettingsRepository
 {

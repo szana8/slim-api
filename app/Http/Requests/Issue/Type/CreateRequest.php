@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Issue\Type;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed name
@@ -35,10 +35,10 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:issue_types',
-            'type' => 'required',
+            'name'        => 'required|unique:issue_types',
+            'type'        => 'required',
             'description' => 'required',
-            'icon' => 'required',
+            'icon'        => 'required',
         ];
     }
 }

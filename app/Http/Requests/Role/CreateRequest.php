@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Role;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 /**
  * @property mixed name
@@ -38,7 +38,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name'        => 'required|unique:roles',
+            'name'         => 'required|unique:roles',
             'display_name' => 'required',
             //'description' => 'required',
         ];

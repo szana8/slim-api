@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Authorization;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class CreateRoleRequest extends FormRequest
 {

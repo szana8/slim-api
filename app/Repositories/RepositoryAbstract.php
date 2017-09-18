@@ -2,16 +2,16 @@
 
 namespace App\Repositories;
 
+use App\Repositories\Contracts\RepositoryInterface;
 use App\Repositories\Criteria\CriteriaInterface;
 use App\Repositories\Exceptions\NoEntityDefined;
-use App\Repositories\Contracts\RepositoryInterface;
 
 abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterface
 {
     /**
      * Repository object entity.
      *
-     * @var mixed   Object entity property
+     * @var mixed Object entity property
      */
     protected $entity;
 
@@ -38,7 +38,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      *
      * @param $id       Primary key value of the object
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function find($id)
     {
@@ -50,7 +50,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      *
      * @param $keyword  String what you want to find
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function search($keyword)
     {
@@ -63,7 +63,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      * @param $column   Column name
      * @param $value    Value what you want to find
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function findWhere($column, $value)
     {
@@ -71,12 +71,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Find the first record
+     * Find the first record.
      *
      * @param $column   Column name
      * @param $value    Value what you want to find
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function findWhereFirst($column, $value)
     {
@@ -84,12 +84,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Find the records which are in the id array
+     * Find the records which are in the id array.
      *
      * @param $column           Column name
-     * @param array $values     Array of values
+     * @param array $values Array of values
      *
-     * @return mixed            Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function findWhereIn($column, array $values)
     {
@@ -97,12 +97,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Find the records which are in the id array
+     * Find the records which are in the id array.
      *
      * @param $column           Column name
-     * @param array $values     Array of values
+     * @param array $values Array of values
      *
-     * @return mixed            Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function findWhereNotIn($column, array $values)
     {
@@ -114,7 +114,7 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      *
      * @param $column   Column name
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function groupBy($column)
     {
@@ -125,9 +125,9 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
      * Find a record by id in the entity.
      *
      * @param $column       Column name
-     * @param string $type  Order by type asc/desc
+     * @param string $type Order by type asc/desc
      *
-     * @return mixed        Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function orderBy($column, $type = 'desc')
     {
@@ -137,9 +137,9 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     /**
      * Create a pagination if needed.
      *
-     * @param int $perPage  Number of records per page
+     * @param int $perPage Number of records per page
      *
-     * @return mixed        Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function paginate($perPage = 10)
     {
@@ -149,9 +149,9 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     /**
      * Create function of the entity.
      *
-     * @param array $properties     Properties of the entity
+     * @param array $properties Properties of the entity
      *
-     * @return mixed                Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function create(array $properties)
     {
@@ -159,12 +159,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Update an entity with the proper values
+     * Update an entity with the proper values.
      *
      * @param $id                   Primary key
-     * @param array $properties     Property of the entity
+     * @param array $properties Property of the entity
      *
-     * @return mixed                Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function update($id, array $properties)
     {
@@ -172,11 +172,12 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Update an entity with the proper values
-     * @param $id                   Primary key
-     * @param array $properties     Property of the entity
+     * Update an entity with the proper values.
      *
-     * @return mixed                Update an entity with the proper values
+     * @param $id                   Primary key
+     * @param array $properties Property of the entity
+     *
+     * @return mixed Update an entity with the proper values
      */
     public function fill($id, array $properties)
     {
@@ -186,10 +187,11 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Delete an entity
+     * Delete an entity.
+     *
      * @param $id               Primary key
      *
-     * @return mixed            Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function delete($id)
     {
@@ -197,11 +199,11 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Eager load the entity with the proper objects
+     * Eager load the entity with the proper objects.
      *
-     * @param array ...$criteria    Criteria object
+     * @param array ...$criteria Criteria object
      *
-     * @return $this                Collection of the affected entity
+     * @return $this Collection of the affected entity
      */
     public function withCriteria(...$criteria)
     {
@@ -215,13 +217,13 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Eager load the entity with custom where clause
+     * Eager load the entity with custom where clause.
      *
      * @param $eagerLoad    Object what you want to eager load
      * @param $column       Column of the join
      * @param $value        Value of the join
      *
-     * @return mixed        Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     public function whereHas($eagerLoad, $column, $value)
     {
@@ -231,15 +233,15 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
     }
 
     /**
-     * Create an object entity if not exists
+     * Create an object entity if not exists.
      *
      * @throws NoEntityDefined
      *
-     * @return mixed    Collection of the affected entity
+     * @return mixed Collection of the affected entity
      */
     protected function resolveEntity()
     {
-        if (! method_exists($this, 'entity')) {
+        if (!method_exists($this, 'entity')) {
             throw new NoEntityDefined('No entity defined');
         }
 

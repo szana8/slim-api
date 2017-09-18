@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\CustomField\CreateRequest;
 use App\Http\Requests\Issue\CustomField\DestroyRequest;
 use App\Http\Requests\Issue\CustomField\UpdateRequest;
 use App\Repositories\Contracts\Issue\CustomFieldRepository;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class CustomFieldController extends Controller
@@ -70,6 +70,7 @@ class CustomFieldController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -82,7 +83,8 @@ class CustomFieldController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -98,7 +100,8 @@ class CustomFieldController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -112,7 +115,8 @@ class CustomFieldController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param  int $id
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

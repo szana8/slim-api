@@ -16,6 +16,7 @@ class IssueResolution extends Model
      *
      * @param $query
      * @param $keyword
+     *
      * @return mixed
      */
     public function scopeSearchByKeyword($query, $keyword)

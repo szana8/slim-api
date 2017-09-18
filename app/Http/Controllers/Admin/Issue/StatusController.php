@@ -2,13 +2,12 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Status\AccessRequest;
 use App\Http\Requests\Issue\Status\CreateRequest;
 use App\Http\Requests\Issue\Status\DestroyRequest;
 use App\Http\Requests\Issue\Status\UpdateRequest;
 use App\Repositories\Contracts\Issue\StatusRepository;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 
 class StatusController extends Controller
@@ -34,6 +33,7 @@ class StatusController extends Controller
 
     /**
      * IssueStatusController constructor.
+     *
      * @param StatusRepository $issueStatusRepository
      */
     public function __construct(StatusRepository $issueStatusRepository)
@@ -45,6 +45,7 @@ class StatusController extends Controller
      * Display a listing of the resource.
      *
      * @param AccessRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(AccessRequest $request)
@@ -70,6 +71,7 @@ class StatusController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -79,11 +81,11 @@ class StatusController extends Controller
         return back()->with('message', $request->name.' issue status has been successfully created!');
     }
 
-
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -99,7 +101,8 @@ class StatusController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -113,7 +116,8 @@ class StatusController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param  int $id
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

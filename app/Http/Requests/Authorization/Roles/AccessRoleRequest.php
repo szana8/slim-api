@@ -2,8 +2,8 @@
 
 namespace App\Http\Requests\Authorization\Roles;
 
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Facades\Auth;
 
 class AccessRoleRequest extends FormRequest
 {
@@ -22,6 +22,7 @@ class AccessRoleRequest extends FormRequest
     public function authorize()
     {
         return true;
+
         return Auth::user()->can([$this->permissions]);
     }
 

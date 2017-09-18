@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 /**
  * @property mixed status
  */
-class AccessRequest extends FormRequest
+class AccessReuqest extends FormRequest
 {
     /**
      * Permissions which needs to access the current action.

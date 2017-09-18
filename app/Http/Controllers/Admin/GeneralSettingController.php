@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Eloquent\Admin\GeneralSetting;
-use App\Repositories\Contracts\GeneralSettingsRepository;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\GeneralSetting\AccessRequest;
 use App\Http\Requests\GeneralSetting\CreateRequest;
-use App\Http\Requests\GeneralSetting\UpdateRequest;
 use App\Http\Requests\GeneralSetting\DestroyRequest;
+use App\Http\Requests\GeneralSetting\UpdateRequest;
+use App\Repositories\Contracts\GeneralSettingsRepository;
+use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class GeneralSettingController extends Controller
@@ -105,7 +105,7 @@ class GeneralSettingController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param int                         $id
+     * @param int           $id
      *
      * @return \Illuminate\Http\Response
      */
@@ -120,7 +120,7 @@ class GeneralSettingController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param int $id
+     * @param int            $id
      *
      * @return \Illuminate\Http\Response
      */

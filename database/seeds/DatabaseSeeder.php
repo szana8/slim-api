@@ -1,7 +1,7 @@
 <?php
 
-use App\User;
 use App\Eloquent\Admin\Role;
+use App\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,7 +27,6 @@ class DatabaseSeeder extends Seeder
         $this->call(IssueResolutionSeeder::class);
         $this->call(CustomFieldDefaultSeeder::class);
         $this->call(WorkflowSeeder::class);
-
     }
 
     protected function runFakers()

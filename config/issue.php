@@ -21,6 +21,6 @@ return [
         ['name' => 'environment', 'type' => 'select-with-list', 'description' => 'Issue Environment', 'api' => 'api/v1/environment', 'protected' => true],
         ['name' => 'score', 'type' => 'text', 'description' => 'Issue Score', 'api' => null, 'protected' => true],
         ['name' => 'issue_status', 'type' => 'select-with-list', 'description' => 'Issue Status', 'api' => 'api/v1/status', 'protected' => true],
-    ]
+    ],
 
 ];

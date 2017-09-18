@@ -35,7 +35,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:issue_screens'
+            'name' => 'required|unique:issue_screens',
         ];
     }
 }

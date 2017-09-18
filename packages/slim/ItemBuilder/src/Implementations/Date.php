@@ -2,8 +2,8 @@
 
 namespace packages\slim\ItemBuilder\src\Implementations;
 
-use slim\ItemBuilder\Contracts\ItemInterface;
 use slim\ItemBuilder\Contracts\ItemBuilderAbstract;
+use slim\ItemBuilder\Contracts\ItemInterface;
 
 class Date extends ItemBuilderAbstract implements ItemInterface
 {

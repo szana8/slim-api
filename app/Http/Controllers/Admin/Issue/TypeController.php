@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Admin\Issue;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\Type\AccessRequest;
 use App\Http\Requests\Issue\Type\CreateRequest;
-use App\Http\Requests\Issue\Type\UpdateRequest;
 use App\Http\Requests\Issue\Type\DestroyRequest;
+use App\Http\Requests\Issue\Type\UpdateRequest;
 use App\Repositories\Contracts\Issue\TypeRepository;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
 class TypeController extends Controller
 {
@@ -34,6 +33,7 @@ class TypeController extends Controller
 
     /**
      * IssueTypeController constructor.
+     *
      * @param TypeRepository $issueTypeRepository
      */
     public function __construct(TypeRepository $issueTypeRepository)
@@ -45,6 +45,7 @@ class TypeController extends Controller
      * Display a listing of the resource.
      *
      * @param AccessRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(AccessRequest $request)
@@ -72,6 +73,7 @@ class TypeController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -84,14 +86,15 @@ class TypeController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
     {
         if (Auth::user()->hasPermission($this->updatePermissions)) {
             return view('admin.issue.type.create', ['issueType' => $this->issueTypeRepository->find($id),
-                'icons' => \File::allFiles(public_path('img/icons')), ]);
+                'icons'                                         => \File::allFiles(public_path('img/icons')), ]);
         }
 
         throw new AccessDeniedHttpException('This action is unauthorized!');
@@ -101,7 +104,8 @@ class TypeController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -115,7 +119,8 @@ class TypeController extends Controller
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param  int $id
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

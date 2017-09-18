@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin\Issue;
 
+use App\Http\Controllers\Controller;
 use App\Repositories\Contracts\Issue\StatusRepository;
 use App\Repositories\Contracts\Issue\WorkflowRepository;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class WorkflowConfigureController extends Controller
 {
@@ -20,15 +20,15 @@ class WorkflowConfigureController extends Controller
 
     /**
      * WorkflowConfigureController constructor.
+     *
      * @param WorkflowRepository $workflowRepository
-     * @param StatusRepository $statusRepository
+     * @param StatusRepository   $statusRepository
      */
     public function __construct(WorkflowRepository $workflowRepository, StatusRepository $statusRepository)
     {
         $this->workflowRepository = $workflowRepository;
         $this->statusRepository = $statusRepository;
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -38,16 +38,17 @@ class WorkflowConfigureController extends Controller
     public function create($id)
     {
         return view('admin.issue.workflow_config.config', [
-            'workflow' => $this->workflowRepository->find($id)->descriptor,
-            'statuses' => $this->statusRepository->all()->toJson(),
-            "workflowId" => $id
+            'workflow'   => $this->workflowRepository->find($id)->descriptor,
+            'statuses'   => $this->statusRepository->all()->toJson(),
+            'workflowId' => $id,
         ]);
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -58,7 +59,8 @@ class WorkflowConfigureController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -69,7 +71,8 @@ class WorkflowConfigureController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -80,8 +83,9 @@ class WorkflowConfigureController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -94,7 +98,8 @@ class WorkflowConfigureController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

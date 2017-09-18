@@ -3,14 +3,14 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Issue\TypeSchema\DestroyRequest;
-use App\Http\Requests\Issue\TypeSchema\UpdateRequest;
-use Illuminate\Support\Facades\Auth;
-use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Http\Requests\Issue\TypeSchema\AccessRequest;
 use App\Http\Requests\Issue\TypeSchema\CreateRequest;
+use App\Http\Requests\Issue\TypeSchema\DestroyRequest;
+use App\Http\Requests\Issue\TypeSchema\UpdateRequest;
 use App\Repositories\Contracts\Issue\TypeRepository;
 use App\Repositories\Contracts\Issue\TypeSchemeRepository;
+use App\Repositories\Eloquent\Criteria\EagerLoad;
+use Illuminate\Support\Facades\Auth;
 
 class TypeSchemaController extends Controller
 {
@@ -40,8 +40,9 @@ class TypeSchemaController extends Controller
 
     /**
      * IssueTypeSchemaController constructor.
+     *
      * @param TypeSchemeRepository $issueTypeSchemeRepository
-     * @param TypeRepository $issueTypeRepository
+     * @param TypeRepository       $issueTypeRepository
      */
     public function __construct(TypeSchemeRepository $issueTypeSchemeRepository, TypeRepository $issueTypeRepository)
     {
@@ -53,6 +54,7 @@ class TypeSchemaController extends Controller
      * Display a listing of the resource.
      *
      * @param AccessRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function index(AccessRequest $request)
@@ -82,6 +84,7 @@ class TypeSchemaController extends Controller
      * Store a newly created resource in storage.
      *
      * @param CreateRequest $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(CreateRequest $request)
@@ -94,7 +97,8 @@ class TypeSchemaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param int $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -110,7 +114,8 @@ class TypeSchemaController extends Controller
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param  int $id
+     * @param int           $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
@@ -124,8 +129,9 @@ class TypeSchemaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param DestroyRequest  $request
-     * @param  int $id
+     * @param DestroyRequest $request
+     * @param int            $id
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)

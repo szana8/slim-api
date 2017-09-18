@@ -36,7 +36,7 @@ class CreateRequest extends FormRequest
     {
         return [
             'name' => 'required|unique:issue_priorities',
-            'icon' => 'required'
+            'icon' => 'required',
         ];
     }
 }

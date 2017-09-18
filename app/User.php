@@ -3,9 +3,9 @@
 namespace App;
 
 use App\Eloquent\Admin\Profile;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laratrust\Traits\LaratrustUserTrait;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable
 {
@@ -27,7 +27,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password'
+        'password',
     ];
 
     /**
@@ -43,6 +43,7 @@ class User extends Authenticatable
      *
      * @param $query
      * @param $keyword
+     *
      * @return mixed
      */
     public function scopeSearchByKeyword($query, $keyword)

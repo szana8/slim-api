@@ -2,10 +2,10 @@
 
 namespace App\Http\Middleware;
 
-use Closure;
-use Lavary\Menu\Menu;
 use App\Eloquent\Admin\MenuItem;
+use Closure;
 use Illuminate\Support\Facades\Auth;
+use Lavary\Menu\Menu;
 
 class CollectUserMenu
 {
@@ -44,9 +44,6 @@ class CollectUserMenu
         return $next($request);
     }
 
-    /**
-     * 
-     */
     public function setNavbarLeft()
     {
         $this->navBar->make('MyNavBar', function ($menu) {
@@ -71,9 +68,6 @@ class CollectUserMenu
         })->sortBy('order');
     }
 
-    /**
-     *
-     */
     public function setNavbarRight()
     {
         $this->navBar->make('NavBarRight', function ($menu) {
@@ -106,9 +100,6 @@ class CollectUserMenu
         });
     }
 
-    /**
-     *
-     */
     protected function guestNavBar()
     {
         $this->navBar->make('NavBarRight', function ($navBar) {

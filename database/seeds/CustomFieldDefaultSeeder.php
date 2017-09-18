@@ -13,8 +13,7 @@ class CustomFieldDefaultSeeder extends Seeder
     public function run()
     {
         $defaults = config('issue.fields');
-        foreach($defaults as $default)
-        {
+        foreach ($defaults as $default) {
             $customField = new CustomField();
             $customField->name = $default['name'];
             $customField->description = $default['description'];
@@ -23,6 +22,5 @@ class CustomFieldDefaultSeeder extends Seeder
             $customField->protected = $default['protected'];
             $customField->save();
         }
-
     }
 }

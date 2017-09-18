@@ -32,7 +32,7 @@ class CreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:workflows'
+            'name' => 'required|unique:workflows',
         ];
     }
 }

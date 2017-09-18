@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use slim\ItemBuilder\ItemBuilder;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Profile\ProfileCreateRequest;
+use Illuminate\Http\Request;
+use slim\ItemBuilder\ItemBuilder;
 
 class ProfileController extends Controller
 {
