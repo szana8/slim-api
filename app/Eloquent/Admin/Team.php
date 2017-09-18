@@ -4,6 +4,11 @@ namespace App\Eloquent\Admin;
 
 use Laratrust\LaratrustTeam;
 
+/**
+ * @property mixed description
+ * @property mixed display_name
+ * @property mixed name
+ */
 class Team extends LaratrustTeam
 {
     protected $fillable = ['name', 'display_name', 'description'];

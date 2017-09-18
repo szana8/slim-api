@@ -1,7 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -12,9 +10,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
-
-
 
 Route::middleware('api')->prefix('v1')->group(function () {
 
@@ -43,6 +38,24 @@ Route::middleware('api')->prefix('v1')->group(function () {
             'create', 'edit'
         ]]);
 
+        // Permission Routes
+        Route::resource('permission', 'PermissionController', ['except' => [
+            'create', 'edit'
+        ]]);
+
+        // Team Routes
+        Route::resource('team', 'TeamController', [
+            'except' => [
+                'create', 'edit'
+        ]]);
+
+        // Team Role Routes
+        Route::resource('team-role', 'TeamRolesController', [
+            'except' => [
+                'create', 'edit'
+        ]]);
+
+        Route::get('team-role/{user}/{team}', 'TeamRolesController@show');
 
         // Profile Routes
         /*Route::get('profile',                           'ProfileController@index')->name('profile');

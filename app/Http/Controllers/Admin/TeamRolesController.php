@@ -12,14 +12,14 @@ use App\Http\Requests\TeamRole\AccessRequest;
 use App\Http\Requests\TeamRole\CreateRequest;
 use App\Http\Requests\TeamRole\DestroyRequest;
 use App\Repositories\Eloquent\Criteria\EagerLoadWithCriteria;
+use App\Transformers\Authorization\RoleTransformer;
+use App\Transformers\Authorization\TeamRoleTransformer;
+use App\Transformers\Authorization\TeamTransformer;
+use App\Transformers\ExceptionTransformer;
 use Illuminate\Support\Facades\Auth;
 
 class TeamRolesController extends Controller
 {
-    /**
-     * @var TeamRolesRepository
-     */
-    protected $teamRolesRepository;
 
     /**
      * @var TeamRepository
@@ -32,41 +32,22 @@ class TeamRolesController extends Controller
     protected $roleRepository;
 
     /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-teamrole'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-teamrole'];
-
-    /**
      * @var UserRepository
      */
-    private $userRepository;
+    protected $userRepository;
 
     /**
      * TeamRolesController constructor.
      *
-     * @param TeamRolesRepository $teamRolesRepository
      * @param TeamRepository $teamRepository
      * @param RoleRepository $roleRepository
      * @param UserRepository $userRepository
      */
-    public function __construct(TeamRolesRepository $teamRolesRepository,
-                                TeamRepository $teamRepository,
-                                RoleRepository $roleRepository,
-                                UserRepository $userRepository)
+    public function __construct(TeamRepository $teamRepository, RoleRepository $roleRepository, UserRepository $userRepository)
     {
         $this->roleRepository = $roleRepository;
         $this->userRepository = $userRepository;
         $this->teamRepository = $teamRepository;
-        $this->teamRolesRepository = $teamRolesRepository;
     }
 
     /**
@@ -77,11 +58,11 @@ class TeamRolesController extends Controller
      */
     public function index(AccessRequest $request)
     {
-        $teamRoles = $this->teamRolesRepository->withCriteria([
+        $teamRoles = $this->roleRepository->withCriteria([
             new EagerLoad(['users', 'team.users']),
         ])->search($request->searchTeamRoles)->get();
 
-        return view('admin.team_role.index', ['teamroles' => $teamRoles, 'teams' => $this->teamRepository->all()]);
+        return fractal()->collection($teamRoles, new RoleTransformer)->toArray();
     }
 
     /**
@@ -92,9 +73,15 @@ class TeamRolesController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->userRepository->find($request->user)->attachRole($this->roleRepository->find($request->role), $request->team);
+        try {
+            $teamRole = $this->userRepository->find($request->user)
+                                             ->attachRole($this->roleRepository->find($request->role), $request->team);
 
-        return back()->with('message', $this->teamRepository->find($request->team)->display_name.' team has been successfully added!');
+            return $this->show($teamRole->id, $request->role);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -105,18 +92,19 @@ class TeamRolesController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id, $roleId)
+    public function show($id, $roleId)
     {
-        if (Auth::user()->hasPermission($this->updatePermissions)) {
+        try {
             $teamRoles = $this->roleRepository->withCriteria([
                 new EagerLoadWithCriteria('team', 'user_id', $id),
                 new EagerLoadWithCriteria('users', 'id', $id),
             ])->findWhere('id', $roleId)->get();
 
-            return view('admin.team_role._create', ['teamRoles' => $teamRoles, 'teams' => $this->teamRepository->all()]);
+            return fractal()->collection($teamRoles)->transformWith(new TeamRoleTransformer)->includeTeam()->includeUser()->toArray();
         }
-
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -128,8 +116,13 @@ class TeamRolesController extends Controller
      */
     public function destroy(DestroyRequest $request, $id)
     {
-        $this->userRepository->find($request->user)->detachRole($this->roleRepository->find($request->role), $id);
+        try {
+            $this->userRepository->find($request->user)->detachRole($this->roleRepository->find($request->role), $id);
 
-        return back()->with('message', $this->teamRepository->find($id)->display_name.' team has been successfully removed!');
+            return $this->show($request->user, $request->role);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 }

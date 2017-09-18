@@ -40,6 +40,7 @@ class UpdateRequest extends FormRequest
         return [
             'name' => 'required',
             Rule::unique('permissions')->ignore(request()->name),
+            'display_name' => 'required',
             //'description' => 'required',
         ];
     }

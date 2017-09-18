@@ -1,7 +1,7 @@
 <?php
 
 
-namespace app\Transformers\Authorization;
+namespace App\Transformers\Authorization;
 
 
 use App\Eloquent\Admin\Permission;

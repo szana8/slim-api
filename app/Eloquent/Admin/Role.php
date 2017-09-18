@@ -6,6 +6,11 @@ use Laratrust\LaratrustRole;
 
 /**
  * @property mixed permissions
+ * @property mixed users
+ * @property mixed team
+ * @property mixed name
+ * @property mixed display_name
+ * @property mixed description
  */
 class Role extends LaratrustRole
 {

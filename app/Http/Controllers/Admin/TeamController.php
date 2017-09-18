@@ -3,13 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Team\AccessRequest;
 use App\Http\Requests\Team\CreateRequest;
 use App\Http\Requests\Team\UpdateRequest;
 use App\Http\Requests\Team\DestroyRequest;
+use App\Transformers\ExceptionTransformer;
 use App\Repositories\Contracts\TeamRepository;
+use App\Transformers\Authorization\TeamTransformer;
 use App\Repositories\Contracts\PermissionRepository;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class TeamController extends Controller
 {
@@ -28,20 +30,6 @@ class TeamController extends Controller
     protected $permission;
 
     /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-team'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-team'];
-
-    /**
      * TeamController constructor.
      *
      * @param TeamRepository       $team
@@ -50,7 +38,6 @@ class TeamController extends Controller
     public function __construct(TeamRepository $team, PermissionRepository $permission)
     {
         $this->team = $team;
-        $this->permission = $permission;
     }
 
     /**
@@ -63,21 +50,8 @@ class TeamController extends Controller
     {
         $teams = $this->team->search($request->search)->paginate();
 
-        return view('admin.team.index', ['teams' => $teams]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (Auth::user()->hasPermission($this->createPermissions)) {
-            return view('admin.team.create', ['permissions' => $this->permission->all()]);
-        }
-
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+        // Return with the collection of roles
+        return fractal()->collection($teams)->transformWith(new TeamTransformer)->includeRoles()->toArray();
     }
 
     /**
@@ -89,25 +63,37 @@ class TeamController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->team->create($request->toArray());
+        try {
+            $team = $this->team->create([
+                'name' => $request->json('name'),
+                'display_name' => $request->json('display_name'),
+                'description' => $request->json('description'),
+            ]);
 
-        return back()->with('message', $request->name.' team has been successfully created!');
+            return $this->show($team->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * Display the specified resource.
      *
      * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
-        if (Auth::user()->hasPermission($this->updatePermissions)) {
-            return view('admin.team.create', ['team' => $this->team->find($id)]);
-        }
+        try {
+            $team = $this->team->find($id);
 
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+            return fractal()->item($team)->transformWith(new TeamTransformer)->includePermissions()->toArray();
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -120,9 +106,18 @@ class TeamController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        $this->team->find($id)->update($request->toArray());
+        try {
+            $team = $this->team->fill($id, [
+                'name' => $request->json('name'),
+                'display_name' => $request->json('display_name'),
+                'description' => $request->json('description'),
+            ]);
 
-        return back()->with('message', $request->name.' team has been successfully updated!');
+            return $this->show($team->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -135,8 +130,14 @@ class TeamController extends Controller
      */
     public function destroy(DestroyRequest $request, $id)
     {
-        $this->team->delete($id);
+        try {
+            $this->team->delete($id);
 
-        return back()->with('message', 'The selected team has been successfully deleted!');
+            return response(null, 204);
+        }
+        catch (Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
+
     }
 }

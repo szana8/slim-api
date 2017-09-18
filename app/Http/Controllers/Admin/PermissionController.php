@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use App\Transformers\ExceptionTransformer;
 use App\Http\Requests\Permission\UpdateRequest;
 use App\Http\Requests\Permission\AccessRequest;
 use App\Http\Requests\Permission\CreateRequest;
 use App\Http\Requests\Permission\DestroyRequest;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Repositories\Contracts\PermissionRepository;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
+use App\Transformers\Authorization\PermissionTransformer;
 
 class PermissionController extends Controller
 {
@@ -20,20 +20,6 @@ class PermissionController extends Controller
      * @var
      */
     protected $permission;
-
-    /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-permission'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-permission'];
 
     /**
      * PermissionController constructor.
@@ -57,21 +43,7 @@ class PermissionController extends Controller
             new EagerLoad(['roles', 'users']),
         ])->search($request->search)->paginate();
 
-        return view('admin.permission.index', ['permissions' => $permissions]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (Auth::user()->hasPermission($this->createPermissions)) {
-            return view('admin.permission.create');
-        }
-
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+        return fractal()->collection($permissions)->transformWith(new PermissionTransformer)->includeRoles()->toArray();
     }
 
     /**
@@ -83,25 +55,37 @@ class PermissionController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->permission->create($request->toArray());
+        try {
+            $permission = $this->permission->create([
+                'name' => $request->json('name'),
+                'display_name' => $request->json('display_name'),
+                'description' => $request->json('description'),
+            ]);
 
-        return back()->with('message', $request->name . ' permission has been successfully created!');
+            return $this->show($permission->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceprionTransformer)->toArray();
+        }
     }
 
     /**
-     * Show the form for editing the specified resource.
-     *
-     * @param int $id
-     *
-     * @return \Illuminate\Http\Response
+     * Display the specified resource.
+     * 
+     * @param  int $id
+     * 
+     * @return Fractal
      */
-    public function edit($id)
+    public function show($id)
     {
-        if (Auth::user()->hasPermission($this->updatePermissions)) {
-            return view('admin.permission.create', ['permission' => $this->permission->find($id)]);
-        }
+        try {
+            $permission = $this->permission->find($id);
 
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+            return fractal()->item($permission)->transformWith(new PermissionTransformer)->toArray();
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -110,13 +94,22 @@ class PermissionController extends Controller
      * @param UpdateRequest $request
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Fractal
      */
     public function update(UpdateRequest $request, $id)
     {
-        $this->permission->find($id)->update($request->toArray());
+        try {
+            $permission = $this->permission->fill($id, [
+                'name' => $request->json('name'),
+                'display_name' => $request->json('display_name'),
+                'description' => $request->json('description'),
+            ]);
 
-        return back()->with('message', $request->name . ' permission has been successfully updated!');
+            return $this->show($permission->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -129,8 +122,13 @@ class PermissionController extends Controller
      */
     public function destroy(DestroyRequest $request, $id)
     {
-        $this->permission->delete($id);
+        try {
+            $this->permission->delete($id);
 
-        return back()->with('message', $request->name . ' permission has been successfully deleted!');
+            return response(null, 204);
+        }
+        catch (Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 }

@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Eloquent\Admin\Role;
-use App\Http\Requests\Role\AccessRequest;
-use App\Http\Requests\Role\CreateRequest;
-use App\Transformers\Authorization\RoleTransformer;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
-
+use App\Http\Requests\Role\AccessRequest;
+use App\Http\Requests\Role\CreateRequest;
 use App\Http\Requests\Role\UpdateRequest;
 use App\Http\Requests\Role\DestroyRequest;
 use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
+use App\Transformers\Authorization\RoleTransformer;
 use App\Repositories\Contracts\PermissionRepository;
 
 class RoleController extends Controller
@@ -43,7 +41,6 @@ class RoleController extends Controller
     {
         $this->role = $role;
         $this->permission = $permission;
-
     }
 
     /**
@@ -58,9 +55,7 @@ class RoleController extends Controller
             new EagerLoad(['permissions', 'team']),
         ])->search($request->search)->paginate();
 
-        // Return with the collection of users
-        return fractal()->collection($roles)->transformWith(new RoleTransformer)->includeRoles()->toArray();
-
+        return fractal()->collection($roles)->transformWith(new TeamTransformer)->includeRoles()->toArray();
     }
 
     /**
@@ -79,16 +74,11 @@ class RoleController extends Controller
                 'description' => $request->description,
             ])->syncPermissions($request->permissions);
 
-            // Return the user data
             return $this->show($role->id);
-
         }
         catch (\Exception $e) {
-            // If we can not create the user, return an exception message and code
             return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
-
         }
-
     }
 
     /**
@@ -105,16 +95,11 @@ class RoleController extends Controller
                 new EagerLoad(['permissions', 'team']),
             ])->find($id);
 
-            // Return the user attributes with roles
             return fractal()->item($role)->transformWith(new RoleTransformer)->includePermissions()->toArray();
-
         }
         catch (ModelNotFoundException $e) {
-            // If we not found the user return an exception message and code
-            return fractal()->item($e)->transformWith(new RoleTransformer)->toArray();
-
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
         }
-
     }
 
     /**
@@ -124,9 +109,6 @@ class RoleController extends Controller
      * @param $id
      *
      * @return \Illuminate\Http\Response
-     *
-     * @internal param Role $role
-     * @internal param int $id
      */
     public function update(UpdateRequest $request, $id)
     {
@@ -137,15 +119,11 @@ class RoleController extends Controller
                 'description' => $request->description,
             ])->syncPermissions($request->permissions);
 
-            // Return the user data
             return $this->show($role->id);
         }
         catch (\Exception $e) {
-            // If we can not create the user, return an exception message and code
             return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
-
         }
-
     }
 
     /**
@@ -164,9 +142,7 @@ class RoleController extends Controller
             return response(null, 204);
         }
         catch (Exception $e) {
-            // If we can not delete the user, return an exception message and code
             return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
         }
-
     }
 }
