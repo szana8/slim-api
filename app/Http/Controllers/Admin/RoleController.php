@@ -13,6 +13,7 @@ use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Transformers\Authorization\RoleTransformer;
 use App\Repositories\Contracts\PermissionRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class RoleController extends Controller
 {
@@ -55,7 +56,10 @@ class RoleController extends Controller
             new EagerLoad(['permissions', 'team']),
         ])->search($request->search)->paginate();
 
-        return fractal()->collection($roles)->transformWith(new TeamTransformer())->includeRoles()->toArray();
+        $resource = new Collection($roles, new RoleTransformer());
+        $resource->setPaginator(new IlluminatePaginatorAdapter($roles));
+
+        return $resource;
     }
 
     /**
@@ -118,7 +122,8 @@ class RoleController extends Controller
             ])->syncPermissions($request->permissions);
 
             return $this->show($role->id);
-        } catch (\Exception $e) {
+        }
+        catch (\Exception $e) {
             return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
         }
     }

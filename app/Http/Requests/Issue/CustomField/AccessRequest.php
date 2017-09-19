@@ -5,6 +5,9 @@ namespace App\Http\Requests\Issue\CustomField;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\FormRequest;
 
+/**
+ * @property mixed search
+ */
 class AccessRequest extends FormRequest
 {
     /**

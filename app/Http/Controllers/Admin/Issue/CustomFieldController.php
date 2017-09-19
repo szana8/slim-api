@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Issue\CustomField\AccessRequest;
+use App\Transformers\Issue\CustomFieldTransformer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\CustomField\CreateRequest;
 use App\Http\Requests\Issue\CustomField\UpdateRequest;
@@ -19,20 +21,6 @@ class CustomFieldController extends Controller
     protected $customFieldRepository;
 
     /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-custom-field'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-custom-field'];
-
-    /**
      * CustomFieldController constructor.
      *
      * @param CustomFieldRepository $customFieldRepository
@@ -45,11 +33,14 @@ class CustomFieldController extends Controller
     /**
      * Display a listing of the resource.
      *
+     * @param AccessRequest $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AccessRequest $request)
     {
-        return view('admin.issue.custom_field.index', ['custom_fields' => $this->customFieldRepository->paginate()]);
+        $field = $this->customFieldRepository->search($request->search)->paginate();
+
+        return fractal()->collection($field->getCollection(), new CustomFieldTransformer)->setPaginator(new IlluminatePaginatorAdapter($field))->toArray();
     }
 
     /**

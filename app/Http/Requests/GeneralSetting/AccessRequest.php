@@ -7,6 +7,7 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed searchSetting
+ * @property mixed search
  */
 class AccessRequest extends FormRequest
 {

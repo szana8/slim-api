@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use App\Eloquent\Admin\GeneralSetting;
+use App\Transformers\GeneralSettingTransformer;
 use App\Http\Requests\GeneralSetting\AccessRequest;
 use App\Http\Requests\GeneralSetting\CreateRequest;
 use App\Http\Requests\GeneralSetting\UpdateRequest;
 use App\Http\Requests\GeneralSetting\DestroyRequest;
 use App\Repositories\Contracts\GeneralSettingsRepository;
-use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
 
 class GeneralSettingController extends Controller
 {
@@ -20,20 +19,6 @@ class GeneralSettingController extends Controller
      * @var GeneralSetting
      */
     protected $generalSetting;
-
-    /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-setting'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-setting'];
 
     /**
      * GeneralSettingsController constructor.
@@ -54,21 +39,9 @@ class GeneralSettingController extends Controller
      */
     public function index(AccessRequest $request)
     {
-        return view('admin.general_setting.index', ['settings' => $this->generalSetting->search($request->searchSetting)->paginate()]);
-    }
+        $settings = $this->generalSetting->search($request->search)->paginate();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (Auth::user()->hasPermission($this->createPermissions)) {
-            return view('admin.general_setting.create');
-        }
-
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+        return fractal()->collection($settings)->transformWith(new GeneralSettingTransformer)->toArray();
     }
 
     /**
@@ -78,13 +51,16 @@ class GeneralSettingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
-        if (Auth::user()->hasPermission($this->updatePermissions)) {
-            return view('admin.general_setting.create', ['general_setting' => $this->generalSetting->find($id)]);
-        }
+        try {
+            $setting = $this->generalSetting->find($id);
 
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+            return fractal()->item($setting)->transformWith(new GeneralSettingTransformer())->toArray();
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+        }
     }
 
     /**
@@ -96,9 +72,18 @@ class GeneralSettingController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->generalSetting->create($request->toArray());
+        try {
+            $setting = $this->generalSetting->create([
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
+            ]);
 
-        return back()->with('message', $request->name.' general setting has been successfully created!');
+            return $this->show($setting->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+        }
     }
 
     /**
@@ -111,9 +96,18 @@ class GeneralSettingController extends Controller
      */
     public function update(UpdateRequest $request, $id)
     {
-        $this->generalSetting->find($id)->update($request->toArray());
+        try {
+            $setting = $this->generalSetting->fill($id, [
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
+            ]);
 
-        return back()->with('message', $request->name.' general setting has been successfully updated!');
+            return $this->show($setting->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+        }
     }
 
     /**
@@ -126,8 +120,13 @@ class GeneralSettingController extends Controller
      */
     public function destroy(DestroyRequest $request, $id)
     {
-        $this->generalSetting->find($id)->delete();
+        try {
+            $this->generalSetting->delete($id);
 
-        return back()->with('message', 'The selected general setting has been successfully deleted!');
+            return response(null, 204);
+        }
+        catch (Exception $e) {
+            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+        }
     }
 }

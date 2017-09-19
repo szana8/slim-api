@@ -4,6 +4,11 @@ namespace App\Eloquent\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed name
+ * @property mixed display_name
+ * @property mixed description
+ */
 class GeneralSetting extends Model
 {
     /**
