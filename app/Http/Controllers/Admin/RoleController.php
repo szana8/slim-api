@@ -9,11 +9,12 @@ use App\Http\Requests\Role\AccessRequest;
 use App\Http\Requests\Role\CreateRequest;
 use App\Http\Requests\Role\UpdateRequest;
 use App\Http\Requests\Role\DestroyRequest;
+use App\Transformers\ExceptionTransformer;
 use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Transformers\Authorization\RoleTransformer;
-use App\Repositories\Contracts\PermissionRepository;
 use League\Fractal\Pagination\IlluminatePaginatorAdapter;
+
 
 class RoleController extends Controller
 {
@@ -25,22 +26,13 @@ class RoleController extends Controller
     protected $role;
 
     /**
-     * Base object of the Permissions repository.
-     *
-     * @var
-     */
-    protected $permission;
-
-    /**
      * RoleController constructor.
      *
      * @param RoleRepository       $role
-     * @param PermissionRepository $permission
      */
-    public function __construct(RoleRepository $role, PermissionRepository $permission)
+    public function __construct(RoleRepository $role)
     {
         $this->role = $role;
-        $this->permission = $permission;
     }
 
     /**
@@ -56,10 +48,9 @@ class RoleController extends Controller
             new EagerLoad(['permissions', 'team']),
         ])->search($request->search)->paginate();
 
-        $resource = new Collection($roles, new RoleTransformer());
-        $resource->setPaginator(new IlluminatePaginatorAdapter($roles));
-
-        return $resource;
+        return fractal()->collection($roles, new RoleTransformer())
+                        ->paginateWith(new IlluminatePaginatorAdapter($roles))
+                        ->toArray();
     }
 
     /**
@@ -80,7 +71,7 @@ class RoleController extends Controller
 
             return $this->show($role->id);
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -98,9 +89,11 @@ class RoleController extends Controller
                 new EagerLoad(['permissions', 'team']),
             ])->find($id);
 
-            return fractal()->item($role)->transformWith(new RoleTransformer())->includePermissions()->toArray();
-        } catch (ModelNotFoundException $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($role, new RoleTransformer())
+                            ->includePermissions()
+                            ->toArray();
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -124,7 +117,7 @@ class RoleController extends Controller
             return $this->show($role->id);
         }
         catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -144,8 +137,8 @@ class RoleController extends Controller
             $this->role->delete($id);
 
             return response(null, 204);
-        } catch (Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 }

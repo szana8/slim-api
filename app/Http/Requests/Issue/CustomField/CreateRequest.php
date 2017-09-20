@@ -7,6 +7,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed name
+ * @property mixed type
+ * @property mixed description
+ * @property mixed api
+ * @property mixed protected
+ * @property mixed permissions
  */
 class CreateRequest extends FormRequest
 {
@@ -15,7 +20,7 @@ class CreateRequest extends FormRequest
      *
      * @var array
      */
-    private $permissions = ['create-custom-field'];
+    private $permission = ['create-custom-field'];
 
     /**
      * Determine if the user is authorized to make this request.
@@ -24,7 +29,7 @@ class CreateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can([$this->permissions]);
+        return Auth::user()->can([$this->permission]);
     }
 
     /**

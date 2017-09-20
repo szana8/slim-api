@@ -2,7 +2,6 @@
 
 namespace App\Transformers\Authorization;
 
-use App\User;
 use App\Eloquent\Admin\Role;
 use App\Transformers\UserTransformer;
 use League\Fractal\TransformerAbstract;
@@ -33,6 +32,8 @@ class TeamRoleTransformer extends TransformerAbstract
     }
 
     /**
+     * Include the Role information to the fractal output.
+     *
      * @param Role $role
      *
      * @return \League\Fractal\Resource\Collection
@@ -43,6 +44,8 @@ class TeamRoleTransformer extends TransformerAbstract
     }
 
     /**
+     * Include the User information to the fractal output.
+     *
      * @param Role $role
      *
      * @return \League\Fractal\Resource\Collection

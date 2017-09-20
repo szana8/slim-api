@@ -8,6 +8,11 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed name
+ * @property mixed description
+ * @property mixed type
+ * @property mixed api
+ * @property mixed protected
+ * @property mixed permissions
  */
 class UpdateRequest extends FormRequest
 {
@@ -16,7 +21,7 @@ class UpdateRequest extends FormRequest
      *
      * @var array
      */
-    private $permissions = ['update-custom-field'];
+    private $permission = ['update-custom-field'];
 
     /**
      * Determine if the user is authorized to make this request.
@@ -25,7 +30,7 @@ class UpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return Auth::user()->can([$this->permissions]);
+        return Auth::user()->can([$this->permission]);
     }
 
     /**

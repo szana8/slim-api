@@ -46,15 +46,18 @@ Route::middleware('api')->prefix('v1')->group(function () {
         Route::resource('team', 'TeamController', [
             'except' => [
                 'create', 'edit',
-        ], ]);
+        ]]);
 
         // Team Role Routes
-        Route::resource('team-role', 'TeamRolesController', [
-            'except' => [
+        Route::resource('team-role', 'TeamRolesController', ['except' => [
                 'create', 'edit',
-        ], ]);
-
+        ]]);
         Route::get('team-role/{user}/{team}', 'TeamRolesController@show');
+
+        // System Routes
+        Route::resource('setting', 'GeneralSettingController', ['except' => [
+            'create', 'edit',
+        ]]);
 
         // Profile Routes
         /*Route::get('profile',                           'ProfileController@index')->name('profile');

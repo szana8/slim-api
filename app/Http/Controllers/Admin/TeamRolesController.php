@@ -14,14 +14,10 @@ use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Transformers\Authorization\RoleTransformer;
 use App\Transformers\Authorization\TeamRoleTransformer;
 use App\Repositories\Eloquent\Criteria\EagerLoadWithCriteria;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class TeamRolesController extends Controller
 {
-    /**
-     * @var TeamRepository
-     */
-    protected $teamRepository;
-
     /**
      * @var RoleRepository
      */
@@ -35,15 +31,13 @@ class TeamRolesController extends Controller
     /**
      * TeamRolesController constructor.
      *
-     * @param TeamRepository $teamRepository
      * @param RoleRepository $roleRepository
      * @param UserRepository $userRepository
      */
-    public function __construct(TeamRepository $teamRepository, RoleRepository $roleRepository, UserRepository $userRepository)
+    public function __construct(RoleRepository $roleRepository, UserRepository $userRepository)
     {
         $this->roleRepository = $roleRepository;
         $this->userRepository = $userRepository;
-        $this->teamRepository = $teamRepository;
     }
 
     /**
@@ -59,7 +53,9 @@ class TeamRolesController extends Controller
             new EagerLoad(['users', 'team.users']),
         ])->search($request->searchTeamRoles)->get();
 
-        return fractal()->collection($teamRoles, new RoleTransformer())->toArray();
+        return fractal()->collection($teamRoles, new RoleTransformer())
+                        ->paginateWith(new IlluminatePaginatorAdapter($teamRoles))
+                        ->toArray();
     }
 
     /**
@@ -77,7 +73,7 @@ class TeamRolesController extends Controller
 
             return $this->show($teamRole->id, $request->role);
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -97,9 +93,12 @@ class TeamRolesController extends Controller
                 new EagerLoadWithCriteria('users', 'id', $id),
             ])->findWhere('id', $roleId)->get();
 
-            return fractal()->collection($teamRoles)->transformWith(new TeamRoleTransformer())->includeTeam()->includeUser()->toArray();
+            return fractal()->collection($teamRoles, new TeamRoleTransformer())
+                            ->includeTeam()
+                            ->includeUser()
+                            ->toArray();
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -114,11 +113,12 @@ class TeamRolesController extends Controller
     public function destroy(DestroyRequest $request, $id)
     {
         try {
-            $this->userRepository->find($request->user)->detachRole($this->roleRepository->find($request->role), $id);
+            $this->userRepository->find($request->user)
+                                 ->detachRole($this->roleRepository->find($request->role), $id);
 
             return $this->show($request->user, $request->role);
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 }

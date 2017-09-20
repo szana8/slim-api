@@ -3,6 +3,8 @@
 namespace App\Transformers\Authorization;
 
 use App\Eloquent\Admin\Role;
+use App\Transformers\PaginatorTransformer;
+use Illuminate\Pagination\LengthAwarePaginator;
 use League\Fractal\TransformerAbstract;
 
 class RoleTransformer extends TransformerAbstract

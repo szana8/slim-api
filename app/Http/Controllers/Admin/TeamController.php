@@ -10,7 +10,7 @@ use App\Http\Requests\Team\DestroyRequest;
 use App\Transformers\ExceptionTransformer;
 use App\Repositories\Contracts\TeamRepository;
 use App\Transformers\Authorization\TeamTransformer;
-use App\Repositories\Contracts\PermissionRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class TeamController extends Controller
 {
@@ -22,19 +22,11 @@ class TeamController extends Controller
     protected $team;
 
     /**
-     * Base object of the Permission repository.
-     *
-     * @var PermissionRepository
-     */
-    protected $permission;
-
-    /**
      * TeamController constructor.
      *
      * @param TeamRepository       $team
-     * @param PermissionRepository $permission
      */
-    public function __construct(TeamRepository $team, PermissionRepository $permission)
+    public function __construct(TeamRepository $team)
     {
         $this->team = $team;
     }
@@ -50,8 +42,10 @@ class TeamController extends Controller
     {
         $teams = $this->team->search($request->search)->paginate();
 
-        // Return with the collection of roles
-        return fractal()->collection($teams)->transformWith(new TeamTransformer())->includeRoles()->toArray();
+        return fractal()->collection($teams, new TeamTransformer())
+                        ->includeRoles()
+                        ->paginateWith(new IlluminatePaginatorAdapter($teams))
+                        ->toArray();
     }
 
     /**
@@ -65,9 +59,9 @@ class TeamController extends Controller
     {
         try {
             $team = $this->team->create([
-                'name'         => $request->json('name'),
-                'display_name' => $request->json('display_name'),
-                'description'  => $request->json('description'),
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
             ]);
 
             return $this->show($team->id);
@@ -106,9 +100,9 @@ class TeamController extends Controller
     {
         try {
             $team = $this->team->fill($id, [
-                'name'         => $request->json('name'),
-                'display_name' => $request->json('display_name'),
-                'description'  => $request->json('description'),
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
             ]);
 
             return $this->show($team->id);
@@ -131,7 +125,7 @@ class TeamController extends Controller
             $this->team->delete($id);
 
             return response(null, 204);
-        } catch (Exception $e) {
+        } catch (\Exception $e) {
             return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
         }
     }

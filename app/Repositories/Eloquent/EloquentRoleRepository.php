@@ -9,9 +9,7 @@ use App\Repositories\Contracts\RoleRepository;
 class EloquentRoleRepository extends RepositoryAbstract implements RoleRepository
 {
     /**
-     * Create Role entity.
-     *
-     * @return Role
+     * @return string
      */
     public function entity()
     {

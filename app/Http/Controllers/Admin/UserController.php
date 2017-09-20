@@ -8,7 +8,6 @@ use App\Transformers\UserTransformer;
 use App\Transformers\ExceptionTransformer;
 use App\Http\Requests\User\UserCreateRequest;
 use App\Http\Requests\User\UserUpdateRequest;
-use App\Repositories\Contracts\RoleRepository;
 use App\Repositories\Contracts\UserRepository;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
@@ -21,20 +20,13 @@ class UserController extends Controller
     protected $user;
 
     /**
-     * @var RoleRepository
-     */
-    protected $role;
-
-    /**
      * UserController constructor.
      *
      * @param UserRepository $user
-     * @param RoleRepository $role
      */
-    public function __construct(UserRepository $user, RoleRepository $role)
+    public function __construct(UserRepository $user)
     {
         $this->user = $user;
-        $this->role = $role;
     }
 
     /**
@@ -48,8 +40,7 @@ class UserController extends Controller
             new EagerLoad(['roles', 'roles.team']),
         ])->paginate();
 
-        // Return with the collection of users
-        return fractal()->collection($users)->transformWith(new UserTransformer())->includeRoles()->toArray();
+        return fractal()->collection($users, new UserTransformer())->includeRoles()->toArray();
     }
 
     /**
@@ -68,11 +59,9 @@ class UserController extends Controller
                 'password' => $request->password,
             ])->syncRoles($request->roles);
 
-            // Return the user data
             return $this->show($user->id);
         } catch (\Exception $e) {
-            // If we can not create the user, return an exception message and code
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -90,11 +79,11 @@ class UserController extends Controller
                 new EagerLoad(['roles', 'roles.team']),
             ])->find($id);
 
-            // Return the user attributes with roles
-            return fractal()->item($user)->transformWith(new UserTransformer())->includeRoles()->toArray();
+            return fractal()->item($user, new UserTransformer())
+                            ->includeRoles()
+                            ->toArray();
         } catch (ModelNotFoundException $e) {
-            // If we not found the user return an exception message and code
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -115,11 +104,9 @@ class UserController extends Controller
                 'password' => $request->password,
             ])->syncRoles($request->roles);
 
-            // Return the user data
             return $this->show($user->id);
         } catch (Exception $e) {
-            // If we can not update the user, return an exception message and code
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -137,8 +124,7 @@ class UserController extends Controller
 
             return response(null, 204);
         } catch (Exception $e) {
-            // If we can not delete the user, return an exception message and code
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 }

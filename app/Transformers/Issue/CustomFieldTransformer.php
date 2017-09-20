@@ -2,8 +2,8 @@
 
 namespace App\Transformers\Issue;
 
-use App\Eloquent\Admin\Issue\CustomField;
 use League\Fractal\TransformerAbstract;
+use App\Eloquent\Admin\Issue\CustomField;
 
 class CustomFieldTransformer extends TransformerAbstract
 {

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Spatie\Fractal\Fractal;
 use App\Http\Controllers\Controller;
 use App\Transformers\ExceptionTransformer;
 use App\Http\Requests\Permission\AccessRequest;
@@ -11,6 +12,7 @@ use App\Http\Requests\Permission\DestroyRequest;
 use App\Repositories\Eloquent\Criteria\EagerLoad;
 use App\Repositories\Contracts\PermissionRepository;
 use App\Transformers\Authorization\PermissionTransformer;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PermissionController extends Controller
 {
@@ -44,7 +46,10 @@ class PermissionController extends Controller
             new EagerLoad(['roles', 'users']),
         ])->search($request->search)->paginate();
 
-        return fractal()->collection($permissions)->transformWith(new PermissionTransformer())->includeRoles()->toArray();
+        return fractal()->collection($permissions, new PermissionTransformer())
+                        ->includeRoles()
+                        ->paginateWith(new IlluminatePaginatorAdapter($permissions))
+                        ->toArray();
     }
 
     /**
@@ -52,20 +57,20 @@ class PermissionController extends Controller
      *
      * @param CreateRequest $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Fractal|array
      */
     public function store(CreateRequest $request)
     {
         try {
             $permission = $this->permission->create([
-                'name'         => $request->json('name'),
-                'display_name' => $request->json('display_name'),
-                'description'  => $request->json('description'),
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
             ]);
 
             return $this->show($permission->id);
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceprionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -81,9 +86,10 @@ class PermissionController extends Controller
         try {
             $permission = $this->permission->find($id);
 
-            return fractal()->item($permission)->transformWith(new PermissionTransformer())->toArray();
+            return fractal()->item($permission, new PermissionTransformer())
+                            ->toArray();
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -99,14 +105,14 @@ class PermissionController extends Controller
     {
         try {
             $permission = $this->permission->fill($id, [
-                'name'         => $request->json('name'),
-                'display_name' => $request->json('display_name'),
-                'description'  => $request->json('description'),
+                'name'         => $request->name,
+                'display_name' => $request->display_name,
+                'description'  => $request->description,
             ]);
 
             return $this->show($permission->id);
         } catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -124,8 +130,8 @@ class PermissionController extends Controller
             $this->permission->delete($id);
 
             return response(null, 204);
-        } catch (Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 }

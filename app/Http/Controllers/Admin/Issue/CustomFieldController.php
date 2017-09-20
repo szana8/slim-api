@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Issue\CustomField\AccessRequest;
+use App\Transformers\ExceptionTransformer;
 use App\Transformers\Issue\CustomFieldTransformer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\CustomField\CreateRequest;
 use App\Http\Requests\Issue\CustomField\UpdateRequest;
 use App\Http\Requests\Issue\CustomField\DestroyRequest;
 use App\Repositories\Contracts\Issue\CustomFieldRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class CustomFieldController extends Controller
 {
@@ -40,21 +42,9 @@ class CustomFieldController extends Controller
     {
         $field = $this->customFieldRepository->search($request->search)->paginate();
 
-        return fractal()->collection($field->getCollection(), new CustomFieldTransformer)->setPaginator(new IlluminatePaginatorAdapter($field))->toArray();
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        if (Auth::user()->hasPermission($this->createPermissions)) {
-            return view('admin.issue.custom_field.create');
-        }
-
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+        return fractal()->collection($field, new CustomFieldTransformer)
+            ->paginateWith(new IlluminatePaginatorAdapter($field))
+            ->toArray();
     }
 
     /**
@@ -66,9 +56,19 @@ class CustomFieldController extends Controller
      */
     public function store(CreateRequest $request)
     {
-        $this->customFieldRepository->create($request->toArray());
+        try {
+            $customField = $this->customFieldRepository->create([
+                'name' => $request->name,
+                'description' => $request->description,
+                'type' => $request->type,
+                'api' => $request->api,
+                'protected' => $request->protected
+            ])->syncPermissions($request->permissions);
 
-        return back()->with('message', $request->name.' custom field has been successfully created!');
+            return $this->show($customField->id);
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
+        }
     }
 
     /**
@@ -78,42 +78,59 @@ class CustomFieldController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function show($id)
     {
-        if (Auth::user()->hasPermission($this->updatePermissions)) {
-            return view('admin.issue.custom_field.create', ['custom_field' => $this->customFieldRepository->find($id)]);
-        }
+        try {
+            $customField = $this->customFieldRepository->find($id);
 
-        throw new AccessDeniedHttpException('This action is unauthorized!');
+            return fractal()->item($customField, new CustomFieldTransformer())->toArray();
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param UpdateRequest $request
-     * @param int           $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
     public function update(UpdateRequest $request, $id)
     {
-        $this->customFieldRepository->find($id)->update($request->toArray());
+        try {
+            $customField = $this->customFieldRepository->fill($id, [
+                'name' => $request->name,
+                'description' => $request->description,
+                'type' => $request->type,
+                'api' => $request->api,
+                'protected' => $request->protected
+            ])->syncPermissions($request->permissions);
 
-        return back()->with('message', $request->name.' custom field has been successfully updated!');
+            return $this->show($customField->id);
+        }
+        catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
+        }
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param DestroyRequest $request
-     * @param int            $id
+     * @param int $id
      *
      * @return \Illuminate\Http\Response
      */
     public function destroy(DestroyRequest $request, $id)
     {
-        $this->customFieldRepository->delete($id);
+        try {
+            $this->customFieldRepository->delete($id);
 
-        return back()->with('message', 'The custom field has been successfully deleted!');
+            return response(null, 204);
+        } catch (\Exception $e) {
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
+        }
     }
 }

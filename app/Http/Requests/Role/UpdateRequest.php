@@ -8,6 +8,9 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed name
+ * @property mixed display_name
+ * @property mixed description
+ * @property mixed permissions
  */
 class UpdateRequest extends FormRequest
 {
@@ -16,7 +19,7 @@ class UpdateRequest extends FormRequest
      *
      * @var array
      */
-    protected $permissions = ['update-role'];
+    protected $permission = ['update-role'];
 
     /**
      * Determine if the user is authorized to make this request.

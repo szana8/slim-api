@@ -7,6 +7,8 @@ use Illuminate\Foundation\Http\FormRequest;
 
 /**
  * @property mixed name
+ * @property mixed display_name
+ * @property mixed description
  */
 class CreateRequest extends FormRequest
 {

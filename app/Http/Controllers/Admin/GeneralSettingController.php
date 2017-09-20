@@ -4,12 +4,14 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Eloquent\Admin\GeneralSetting;
+use App\Transformers\ExceptionTransformer;
 use App\Transformers\GeneralSettingTransformer;
 use App\Http\Requests\GeneralSetting\AccessRequest;
 use App\Http\Requests\GeneralSetting\CreateRequest;
 use App\Http\Requests\GeneralSetting\UpdateRequest;
 use App\Http\Requests\GeneralSetting\DestroyRequest;
 use App\Repositories\Contracts\GeneralSettingsRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class GeneralSettingController extends Controller
 {
@@ -41,7 +43,9 @@ class GeneralSettingController extends Controller
     {
         $settings = $this->generalSetting->search($request->search)->paginate();
 
-        return fractal()->collection($settings)->transformWith(new GeneralSettingTransformer)->toArray();
+        return fractal()->collection($settings, new GeneralSettingTransformer)
+                        ->paginateWith(new IlluminatePaginatorAdapter($settings))
+                        ->toArray();
     }
 
     /**
@@ -56,10 +60,10 @@ class GeneralSettingController extends Controller
         try {
             $setting = $this->generalSetting->find($id);
 
-            return fractal()->item($setting)->transformWith(new GeneralSettingTransformer())->toArray();
+            return fractal()->item($setting, new GeneralSettingTransformer())->toArray();
         }
         catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -82,7 +86,7 @@ class GeneralSettingController extends Controller
             return $this->show($setting->id);
         }
         catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer)->toArray();
+            return fractal()->item($e, new ExceptionTransformer)->toArray();
         }
     }
 
@@ -106,7 +110,7 @@ class GeneralSettingController extends Controller
             return $this->show($setting->id);
         }
         catch (\Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 
@@ -126,7 +130,7 @@ class GeneralSettingController extends Controller
             return response(null, 204);
         }
         catch (Exception $e) {
-            return fractal()->item($e)->transformWith(new ExceptionTransformer())->toArray();
+            return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
 }
