@@ -62,7 +62,7 @@
 
 <script>
     import { mapActions } from 'vuex'
-
+    import localforage from 'localforage'
     export default {
 
         data () {
@@ -87,6 +87,12 @@
                         password: this.password
                     },
                     context: this
+                }).then(() => {
+                    localforage.getItem('intended').then((name) => {
+                        this.$router.replace({ name: name })
+                    }).catch(() => {
+                        this.$router.replace({ name: 'home' })
+                    })
                 })
 
             }

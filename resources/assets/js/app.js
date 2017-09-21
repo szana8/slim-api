@@ -25,6 +25,15 @@ window.Vue = require('vue');
 Vue.component('app', require('./components/App.vue'));
 Vue.component('navigation', require('./components/Navigation.vue'));
 
+store.dispatch('auth/setToken').then(() => {
+    store.dispatch('auth/fetchUser').catch(() => {
+        store.dispatch('auth/clearAuth')
+        router.replace({ name: 'login' })
+    })
+}).catch(() => {
+    store.dispatch('auth/clearAuth')
+})
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

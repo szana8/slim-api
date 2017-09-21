@@ -33,17 +33,17 @@ class AuthController extends Controller
             'exp' => Carbon::now()->addWeek()->timestamp,
         ]);
 
-        return response()->json([
-            'data' => $user,
-            'meta' => [
-                'token' => $token
-            ]
-        ], 200);
+        $resource = new Item($user, new UserTransformer(), 'user');
+        $resource->setMetaValue('token', $token);
+
+        $manager = new Manager();
+        $manager->setSerializer(new DataArraySerializer());
+
+        return $manager->createData($resource)->toArray();
     }
 
     /**
-     * @param Request $request
-     *
+     * @param LoginRequest|Request $request
      * @return array|\Illuminate\Http\JsonResponse
      */
     public function signIn(LoginRequest $request)
@@ -73,5 +73,10 @@ class AuthController extends Controller
 
         return $manager->createData($resource)->toArray();
 
+    }
+
+    public function signedIn(Request $request)
+    {
+        return fractal()->item($request->user(), new UserTransformer())->toArray();
     }
 }
