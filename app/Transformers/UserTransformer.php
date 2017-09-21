@@ -33,11 +33,8 @@ class UserTransformer extends TransformerAbstract
     }
 
     /**
-     * Include the user roles to the API data output.
-     *
-     * @param  User         User Object
-     *
-     * @return Collection Collection of the roles
+     * @param User $user
+     * @return \League\Fractal\Resource\Collection
      */
     public function includeRoles(User $user)
     {

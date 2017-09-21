@@ -3,18 +3,23 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\LoginRequest;
+use App\Transformers\UserTransformer;
 use JWTAuth;
 use Carbon\Carbon;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterFormRequest;
+use League\Fractal\Manager;
+use League\Fractal\Resource\Item;
+use League\Fractal\Serializer\DataArraySerializer;
 use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
     /**
      * @param RegisterFormRequest $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function signUp(RegisterFormRequest $request)
     {
@@ -39,7 +44,7 @@ class AuthController extends Controller
     /**
      * @param Request $request
      *
-     * @return \Illuminate\Http\JsonResponse
+     * @return array|\Illuminate\Http\JsonResponse
      */
     public function signIn(LoginRequest $request)
     {
@@ -60,6 +65,13 @@ class AuthController extends Controller
             ], 401);
         }
 
-        return response()->json(compact('token'));
+        $resource = new Item($request->user(), new UserTransformer(), 'user');
+        $resource->setMetaValue('token', $token);
+
+        $manager = new Manager();
+        $manager->setSerializer(new DataArraySerializer());
+
+        return $manager->createData($resource)->toArray();
+
     }
 }
