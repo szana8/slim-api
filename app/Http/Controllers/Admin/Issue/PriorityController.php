@@ -3,29 +3,17 @@
 namespace App\Http\Controllers\Admin\Issue;
 
 use App\Http\Controllers\Controller;
+use app\Transformers\Issue\PriorityTransformer;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\Issue\Priority\AccessRequest;
 use App\Http\Requests\Issue\Priority\CreateRequest;
 use App\Http\Requests\Issue\Priority\UpdateRequest;
 use App\Http\Requests\Issue\Priority\DestroyRequest;
 use App\Repositories\Contracts\Issue\PriorityRepository;
+use League\Fractal\Pagination\IlluminatePaginatorAdapter;
 
 class PriorityController extends Controller
 {
-    /**
-     * Permissions for the create functionality.
-     *
-     * @var array
-     */
-    protected $createPermissions = ['create-priority'];
-
-    /**
-     * Permissions for the update functionality.
-     *
-     * @var array
-     */
-    protected $updatePermissions = ['update-priority'];
-
     /**
      * Base object of the Priority repository.
      *
@@ -52,7 +40,11 @@ class PriorityController extends Controller
      */
     public function index(AccessRequest $request)
     {
-        return view('admin.issue.priority.index', ['priorities' => $this->priorityRepository->search($request->priority)->paginate()]);
+        $priorities = $this->priorityRepository->search($request->priority)->paginate();
+
+        return fractal()->collection($priorities, new PriorityTransformer())
+            ->paginateWith(new IlluminatePaginatorAdapter($priorities))
+            ->toArray();
     }
 
     /**

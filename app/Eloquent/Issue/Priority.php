@@ -4,6 +4,11 @@ namespace App\Eloquent\Issue;
 
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * @property mixed name
+ * @property mixed description
+ * @property mixed icon
+ */
 class Priority extends Model
 {
     /**

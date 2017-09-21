@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Requests\LoginRequest;
 use JWTAuth;
 use Carbon\Carbon;
-use App\Models\User;
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterFormRequest;
@@ -17,11 +18,22 @@ class AuthController extends Controller
      */
     public function signUp(RegisterFormRequest $request)
     {
-        User::create([
+        $user = User::create([
             'name'     => $request->json('name'),
             'email'    => $request->json('email'),
             'password' => bcrypt($request->json('password')),
         ]);
+
+        $token = JWTAuth::attempt($request->only('email', 'password'), [
+            'exp' => Carbon::now()->addWeek()->timestamp,
+        ]);
+
+        return response()->json([
+            'data' => $user,
+            'meta' => [
+                'token' => $token
+            ]
+        ], 200);
     }
 
     /**
@@ -29,7 +41,7 @@ class AuthController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function signIn(Request $request)
+    public function signIn(LoginRequest $request)
     {
         try {
             $token = JWTAuth::attempt($request->only('email', 'password'), [
