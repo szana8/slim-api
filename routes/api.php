@@ -22,6 +22,9 @@ Route::middleware('api')->prefix('v1')->group(function () {
     // Signed in route
     Route::get('auth/signedIn', 'Auth\AuthController@signedIn')->middleware('jwt.auth');
 
+    // Logout route
+    Route::post('auth/logout', 'Auth\AuthController@logout')->middleware('jwt.auth');
+
     /*
      *
      * Need to create an admin middleware and add these routes to that

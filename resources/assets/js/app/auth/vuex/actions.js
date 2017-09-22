@@ -43,16 +43,22 @@ export const checkTokenExists = ({commit, dispatch}, token) => {
     })
 }
 
-export const clearAuth = ({commit}, token) => {
+export const clearAuth = ({ commit }, token) => {
     commit('setAuthenticated', false)
     commit('setUserData', null)
     commit('setToken', null)
-    commit('setHttpToken', null)
+    setHttpToken(null)
 }
 
-export const fetchUser = ({commit}) => {
+export const fetchUser = ({ commit }) => {
     return axios.get('/api/v1/auth/signedIn').then((response) => {
         commit('setAuthenticated', true)
         commit('setUserData', response.data.data)
+    })
+}
+
+export const logout = ({ dispatch }) => {
+    return axios.post('/api/v1/auth/logout').then((response) => {
+        dispatch('clearAuth')
     })
 }

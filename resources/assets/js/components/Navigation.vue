@@ -49,7 +49,14 @@
                             </ul>
                         </li>
 
-                        <li><a href="#" v-text="user.data.name"></a></li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ user.data.name }} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" @click.prevent="signout">Logout</a></li>
+                            </ul>
+                        </li>
 
                     </ul>
 
@@ -66,13 +73,28 @@
 </template>
 
 <script>
-    import { mapGetters } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
 
         computed: mapGetters({
             user: 'auth/user'
-        })
+        }),
+
+        methods: {
+
+            ...mapActions({
+                logout: 'auth/logout'
+            }),
+
+            signout () {
+                this.logout().then(() => {
+                    this.$router.replace({ name: 'home' })
+                })
+
+            }
+
+        }
 
     }
 </script>

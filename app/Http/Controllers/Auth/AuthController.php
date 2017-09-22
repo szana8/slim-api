@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Requests\LoginRequest;
 use App\Transformers\UserTransformer;
-use JWTAuth;
 use Carbon\Carbon;
 use App\User;
 use Illuminate\Http\Request;
@@ -14,9 +13,25 @@ use League\Fractal\Manager;
 use League\Fractal\Resource\Item;
 use League\Fractal\Serializer\DataArraySerializer;
 use Tymon\JWTAuth\Exceptions\JWTException;
+use Tymon\JWTAuth\JWTAuth;
 
 class AuthController extends Controller
 {
+    /**
+     * @var JWTAuth
+     */
+    private $auth;
+
+    /**
+     * AuthController constructor.
+     * @param JWTAuth $auth
+     */
+    public function __construct(JWTAuth $auth)
+    {
+        $this->auth = $auth;
+    }
+
+
     /**
      * @param RegisterFormRequest $request
      * @return \Illuminate\Http\JsonResponse
@@ -29,7 +44,7 @@ class AuthController extends Controller
             'password' => bcrypt($request->json('password')),
         ]);
 
-        $token = JWTAuth::attempt($request->only('email', 'password'), [
+        $token = $this->auth->attempt($request->only('email', 'password'), [
             'exp' => Carbon::now()->addWeek()->timestamp,
         ]);
 
@@ -49,7 +64,7 @@ class AuthController extends Controller
     public function signIn(LoginRequest $request)
     {
         try {
-            $token = JWTAuth::attempt($request->only('email', 'password'), [
+            $token = $this->auth->attempt($request->only('email', 'password'), [
                 'exp' => Carbon::now()->addWeek()->timestamp,
             ]);
         } catch (JWTException $e) {
@@ -75,8 +90,22 @@ class AuthController extends Controller
 
     }
 
+    /**
+     * @param Request $request
+     * @return array
+     */
     public function signedIn(Request $request)
     {
         return fractal()->item($request->user(), new UserTransformer())->toArray();
+    }
+
+    /**
+     * @return \Illuminate\Contracts\Routing\ResponseFactory|\Symfony\Component\HttpFoundation\Response
+     */
+    public function logout()
+    {
+        $this->auth->invalidate($this->auth->getToken());
+
+        return response(null, 200);
     }
 }
