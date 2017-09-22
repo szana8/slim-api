@@ -6,6 +6,7 @@ import beforeEach from './beforeEach'
 Vue.use(Router)
 
 const router = new Router({
+    //mode: 'history',
     routes: routes
 })
 

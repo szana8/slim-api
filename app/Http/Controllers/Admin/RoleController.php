@@ -49,6 +49,7 @@ class RoleController extends Controller
         ])->search($request->search)->paginate();
 
         return fractal()->collection($roles, new RoleTransformer())
+                        ->includePermissions()
                         ->paginateWith(new IlluminatePaginatorAdapter($roles))
                         ->toArray();
     }
