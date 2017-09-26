@@ -1,12 +1,14 @@
 <template>
     <div>
-        <navigation></navigation>
-
-        <loader></loader>
-
-        <div class="container-fluid">
-            <router-view></router-view>
-        </div>
+        <v-app>
+            <navigation></navigation>
+            <main>
+                <v-container fluid>
+                    <router-view></router-view>
+                </v-container>
+            </main>
+            <v-footer></v-footer>
+        </v-app>
     </div>
 </template>
 

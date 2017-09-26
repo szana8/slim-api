@@ -1,6 +1,9 @@
 import router from './router'
 import store from './vuex'
 import localforage from 'localforage'
+import vuetify from 'vuetify'
+
+
 /**
  *
  */
@@ -20,14 +23,14 @@ window.Vue = require('vue');
 
 window.bus = new Vue()
 
+Vue.use(vuetify)
+
 /**
  * Register Vue components for the future usage
  */
 Vue.component('app', require('./components/App.vue'));
-Vue.component('navigation', require('./components/Navigation.vue'));
-Vue.component('spinner', require('./components/Spinner.vue'));
-Vue.component('icon', require('./components/Icon.vue'));
 Vue.component('loader', require('./components/Loader.vue'));
+Vue.component('navigation', require('./components/Navigation.vue'));
 
 store.dispatch('auth/setToken').then(() => {
     store.dispatch('auth/fetchUser').catch(() => {

@@ -9,7 +9,9 @@
     <title>Slim</title>
 
     <!-- Fonts -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" type="text/css">
+    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
 </head>
     <body>
