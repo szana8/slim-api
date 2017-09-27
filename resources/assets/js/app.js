@@ -25,6 +25,12 @@ window.bus = new Vue()
 
 Vue.use(vuetify)
 
+import Errors from './classes/Errors';
+window.Errors = Errors;
+
+import Form from './classes/Form';
+window.Form = Form;
+
 /**
  * Register Vue components for the future usage
  */

@@ -1,31 +1,19 @@
 <template>
     <div>
-        <v-navigation-drawer  temporary
-                              v-model="drawer"
-                              light
-                              overflow
-                              absolute>
+        <v-navigation-drawer temporary v-model="drawer" light overflow absolute>
             <v-list class="pa-1">
-                <v-list-tile avatar>
+
+                <v-list-tile v-for="item in items" v-if="item.needsAuth === user.authenticated" :key="item.title">
                     <v-list-tile-avatar>
-                        <v-icon left>person</v-icon>
+                        <v-icon left>{{ item.icon }}</v-icon>
                     </v-list-tile-avatar>
                     <v-list-tile-content>
-                        <v-list-tile-title>Administrator</v-list-tile-title>
+                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
                     </v-list-tile-content>
                 </v-list-tile>
+
             </v-list>
-            <v-list class="pt-0" dense>
-                <v-divider></v-divider>
-                <v-list-tile avatar>
-                    <v-list-tile-avatar>
-                        <v-icon left>settings</v-icon>
-                    </v-list-tile-avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>Settings</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-            </v-list>
+
         </v-navigation-drawer>
 
         <v-toolbar dark class="primary">
@@ -40,18 +28,27 @@
                     dark
                     hide-details
                     class="hidden-xs-only"
+                    v-if="user.authenticated"
             ></v-text-field>
 
             <v-toolbar-items class="hidden-xs-only">
 
-                <v-btn flat>
-                    <v-icon>settings</v-icon>
+                <v-btn flat v-for="item in items" :key="item.title" v-if="item.needsAuth === user.authenticated" :to="item.link">
+                    <v-icon left>{{ item.icon }}</v-icon>
+                    {{ item.title }}
                 </v-btn>
 
-                <v-btn flat>
-                    <v-icon left>person</v-icon>
-                    Administrator
-                </v-btn>
+                <v-menu bottom right v-if="user.authenticated">
+                    <v-btn flat slot="activator">
+                        <v-icon left>person</v-icon>
+                        {{ user.data.name }}
+                    </v-btn>
+                    <v-list>
+                        <v-list-tile @click.prevent="signout">
+                            <v-list-tile-title>Logout</v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-menu>
 
             </v-toolbar-items>
         </v-toolbar>
@@ -68,10 +65,11 @@
             return {
                 drawer: null,
                 items: [
-                    { title: 'Home', icon: 'dashboard' },
-                    { title: 'About', icon: 'question_answer' }
+                    { icon: 'settings', title: 'Settings', needsAuth: true },
+                    { icon: 'face', title: 'Sign up', needsAuth: false, link: 'register' },
+                    { icon: 'lock_open', title: 'Sign in', needsAuth: false, link: 'login' },
                 ],
-                right: null
+                right: null,
             }
         },
 
@@ -87,7 +85,7 @@
 
             signout () {
                 this.logout().then(() => {
-                    this.$router.replace({ name: 'home' })
+                    this.$router.replace({ name: 'login' })
                 })
 
             }
