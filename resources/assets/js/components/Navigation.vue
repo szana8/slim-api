@@ -33,15 +33,24 @@
 
             <v-toolbar-items class="hidden-xs-only">
 
-                <v-btn flat v-for="item in items" :key="item.title" v-if="item.needsAuth === user.authenticated" :to="item.link">
-                    <v-icon left>{{ item.icon }}</v-icon>
-                    {{ item.title }}
-                </v-btn>
 
-                <v-menu bottom right v-if="user.authenticated">
+                <v-menu offset-y bottom right v-if="user.authenticated" :key="item.title" v-for="item in items">
+                    <v-btn flat slot="activator" v-if="item.needsAuth === user.authenticated">
+                        <v-icon left>{{ item.icon }}</v-icon>
+                        {{ item.title }}
+                    </v-btn>
+                    <v-list v-if="item.children">
+                        <v-list-tile :key="child.title" v-for="child in item.children" @click.prevent="navigate(child.name)">
+                            <v-list-tile-title>{{ child.title }}</v-list-tile-title>
+                        </v-list-tile>
+                    </v-list>
+                </v-menu>
+
+                <v-menu offset-y bottom right v-if="user.authenticated">
                     <v-btn flat slot="activator">
-                        <v-icon left>person</v-icon>
-                        {{ user.data.name }}
+                        <v-avatar class="info">
+                            <span class="white--text headline">{{ user.data.name.charAt(0) }}</span>
+                        </v-avatar>
                     </v-btn>
                     <v-list>
                         <v-list-tile @click.prevent="signout">
@@ -65,7 +74,40 @@
             return {
                 drawer: null,
                 items: [
-                    { icon: 'settings', title: 'Settings', needsAuth: true },
+                    {
+                        icon: 'settings',
+                        title: 'Settings',
+                        needsAuth: true ,
+                        children: [
+                            {
+                                icon: '',
+                                title: 'Roles',
+                                needsAuth: true,
+                                name: 'roles'
+                            },
+
+                            {
+                                icon: '',
+                                title: 'Permissions',
+                                needsAuth: true,
+                                name: 'permissions'
+                            },
+
+                            {
+                                icon: '',
+                                title: 'Teams',
+                                needsAuth: true,
+                                name: 'teams'
+                            },
+
+                            {
+                                icon: '',
+                                title: 'Team Roles',
+                                needsAuth: true,
+                                name: 'teamRoles'
+                            }
+                        ]
+                    },
                     { icon: 'face', title: 'Sign up', needsAuth: false, link: 'register' },
                     { icon: 'lock_open', title: 'Sign in', needsAuth: false, link: 'login' },
                 ],
@@ -88,6 +130,10 @@
                     this.$router.replace({ name: 'login' })
                 })
 
+            },
+
+            navigate (route) {
+                this.$router.replace({ name: route })
             }
 
         }
