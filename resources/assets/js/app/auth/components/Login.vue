@@ -1,77 +1,60 @@
 <template>
-    <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
-                <div class="panel-body">
-                    <form class="form-horizontal" method="POST" @submit.prevent="submit">
+    <div>
+        <v-layout column>
+            <v-flex xs12 sm4 offset-sm4>
+                <v-card>
 
-                        <div class="alert alert-danger" v-if="errors.error">
-                            {{ errors.error }}
-                        </div>
+                    <v-card-title primary-title>
+                        <h3 class="headline mb-0">Login</h3>
+                    </v-card-title>
 
-                        <div class="form-group" v-bind:class="{ 'has-error': errors.email }">
-                            <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" v-model="email" autofocus>
-
-                                <span class="help-block" v-if="errors.email">
-                                        {{ errors.email[0] }}
-                                    </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group" v-bind:class="{ 'has-error': errors.password }">
-                            <label for="password" class="col-md-4 control-label">Password</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" v-model="password">
-
-                                <span class="help-block" v-if="errors.password">
-                                        {{ errors.password[0] }}
-                                    </span>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember"> Remember Me
-                                    </label>
+                    <v-card-text>
+                        <v-form>
+                            
+                            <!-- Email field -->
+                            <v-text-field label="Email" v-model="email" v-bind:class="{ 'input-group--error':  errors.email }"></v-text-field>
+                            <div class="input-group__details" style="margin-top:-30px;color:red;" v-if="errors.email">
+                                <div class="input-group__messages">
+                                    <div class="input-group__error" v-text="errors.email[0]"/>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
-                                    Login
-                                </button>
-
-                                <a class="btn btn-link">Forgot Your Password?</a>
+                            <!-- Password field -->
+                            <v-text-field type="password" label="Password" v-model="password" v-bind:class="{ 'input-group--error':  errors.password }"></v-text-field>
+                            <div class="input-group__details" style="margin-top:-30px;color:red;" v-if="errors.password">
+                                <div class="input-group__messages">
+                                    <div class="input-group__error" v-text="errors.password[0]"/>
+                                </div>
                             </div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </div>
+
+                            <!-- End of fields -->
+                        </v-form>
+                    </v-card-text>
+
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn primary class="white--text" @click.prevent="submit">Login</v-btn>
+                    </v-card-actions>
+
+                </v-card>
+            </v-flex>
+        </v-layout>
+
     </div>
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import {isEmpty} from 'lodash'
+    import {mapActions} from 'vuex'
     import localforage from 'localforage'
-    import { isEmpty } from 'lodash'
 
     export default {
 
-        data () {
+        data() {
             return {
                 email: null,
                 password: null,
-                errors: []
+                errors: [],
             }
         },
 
@@ -82,22 +65,30 @@
             }),
 
             submit: function () {
+                window.bus.$emit('loading', true)
 
                 this.login({
+
                     payload: {
                         email: this.email,
                         password: this.password
                     },
                     context: this
+
                 }).then(() => {
+                    window.bus.$emit('loading', false)
+
                     localforage.getItem('intended').then((name) => {
                         if (isEmpty(name)) {
-                            this.$router.replace({ name: 'home' })
+                            this.$router.replace({name: 'home'})
                             return
                         }
 
-                        this.$router.replace({ name: name })
+                        this.$router.replace({name: name})
                     })
+
+                }).catch((error) => {
+                    console.log(error)
                 })
 
             }

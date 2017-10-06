@@ -1,94 +1,104 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Register</div>
-                    <div class="panel-body">
-                        <form class="form-horizontal" method="POST" @submit.prevent="submit">
+    <div>
+        <v-layout column>
+            <v-flex xs12 sm6 offset-sm3>
+                <v-card>
+                     <v-card-title primary-title>
+                        <h3 class="headline mb-0">Register</h3>
+                    </v-card-title>
 
-                            <div class="form-group" v-bind:class="{ 'has-error': errors.name }">
-                                <label for="name" class="col-md-4 control-label">Name</label>
-
-                                <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control" v-model="name" autofocus>
-
-                                    <span class="help-block" v-if="errors.name">
-                                        {{ errors.name[0] }}
-                                    </span>
+                    <v-card-text>
+                        <v-form>
+                            
+                             <!-- Name field -->
+                            <v-text-field label="Name" v-model="name" v-bind:class="{ 'input-group--error':  errors.name }"></v-text-field>
+                            <div class="input-group__details" style="margin-top:-30px;color:red;" v-if="errors.name">
+                                <div class="input-group__messages">
+                                    <div class="input-group__error" v-text="errors.name[0]"/>
                                 </div>
                             </div>
 
-                            <div class="form-group" v-bind:class="{ 'has-error': errors.email }">
-                                <label for="email" class="col-md-4 control-label">E-Mail Address</label>
-
-                                <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control" v-model="email">
-
-                                    <span class="help-block" v-if="errors.email">
-                                        {{ errors.email[0] }}
-                                    </span>
+                            <!-- Email field -->
+                            <v-text-field label="Email" v-model="email" v-bind:class="{ 'input-group--error':  errors.email }"></v-text-field>
+                            <div class="input-group__details" style="margin-top:-30px;color:red;" v-if="errors.email">
+                                <div class="input-group__messages">
+                                    <div class="input-group__error" v-text="errors.email[0]"/>
                                 </div>
                             </div>
 
-                            <div class="form-group" v-bind:class="{ 'has-error': errors.password }">
-                                <label for="password" class="col-md-4 control-label">Password</label>
-
-                                <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" v-model="password">
-
-                                    <span class="help-block" v-if="errors.password">
-                                        {{ errors.password[0] }}
-                                    </span>
+                            <!-- Password field -->
+                            <v-text-field type="password" label="Password" v-model="password" v-bind:class="{ 'input-group--error':  errors.password }"></v-text-field>
+                            <div class="input-group__details" style="margin-top:-30px;color:red;" v-if="errors.password">
+                                <div class="input-group__messages">
+                                    <div class="input-group__error" v-text="errors.password[0]"/>
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary">
-                                        Register
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+                        </v-form>
+                    </v-card-text>
+
+                    <v-card-actions>
+                        <v-spacer></v-spacer>
+                        <v-btn primary class="white--text" @click.prevent="submit">Login</v-btn>
+                    </v-card-actions>
+
+                </v-card>
+            </v-flex>
+        </v-layout>
     </div>
+
 </template>
 
 <script>
-    import { mapActions } from 'vuex'
+    import { mapGetters, mapActions } from 'vuex'
 
     export default {
 
         data () {
+
             return {
                 name: null,
                 email: null,
                 password: null,
                 errors: []
             }
+            
         },
+
+        computed: mapGetters({
+
+            user: 'auth/user'
+
+        }),
 
         methods: {
 
             ...mapActions({
+
                 register: 'auth/register'
+
             }),
 
             submit: function () {
-
+                
                 this.register({
+
                     payload: {
                         name: this.name,
                         email: this.email,
                         password: this.password
                     },
+
                     context: this
-                }).then(() => {
-                    this.$router.replace({ name: 'home' })
+
+                }).then((response) => {
+
+                   this.$router.replace({ name: 'home' })
+
+                }).catch((error) => {
+
+                    console.log(error)
+
                 })
 
             }
