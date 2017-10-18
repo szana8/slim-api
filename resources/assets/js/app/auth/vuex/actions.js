@@ -1,22 +1,15 @@
+import { setHttpToken } from "../../../helpers/index";
 import { isEmpty } from 'lodash'
 import localforage from 'localforage'
-import { setHttpToken } from "../../../helpers/index";
 
 export const register = ({ dispatch }, { payload, context }) => {
-    
-    return new Promise((resolve, reject) => {
-        axios.post('api/v1/auth/signup', payload).then((response) => {
-            dispatch('setToken', response.data.meta.token).then(() => {
-                dispatch('fetchUser')
-            })
-
-            resolve()
-        }).catch((error) => {
-            context.errors = error.response.data.errors
-            reject(error)
+    return axios.post('api/v1/auth/signup', payload).then((response) => {
+        dispatch('setToken', response.data.meta.token).then(() => {
+            dispatch('fetchUser')
         })
+    }).catch((error) => {
+        context.errors = error.response.data.errors
     })
-    
 }
 
 export const login = ({ dispatch }, { payload, context }) => {
@@ -25,7 +18,7 @@ export const login = ({ dispatch }, { payload, context }) => {
            dispatch('fetchUser')
        })
     }).catch((error) => {
-        context.errors = error.response.data.errors
+        context.errors = error.response.data
     })
 }
 

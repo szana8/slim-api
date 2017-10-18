@@ -1,57 +1,73 @@
 <template>
     <div>
-        <v-navigation-drawer temporary v-model="drawer" light overflow absolute>
-            <v-list class="pa-1">
 
-                <v-list-tile v-for="item in items" v-if="item.needsAuth === user.authenticated" :key="item.title">
-                    <v-list-tile-avatar>
-                        <v-icon left>{{ item.icon }}</v-icon>
-                    </v-list-tile-avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
+        <nav class="navbar navbar-default navbar-static-top">
+            <div class="container-fluid">
+                <div class="navbar-header">
 
-            </v-list>
+                    <!-- Collapsed Hamburger -->
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
+                        <span class="sr-only">Toggle Navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
 
-        </v-navigation-drawer>
+                    <!-- Branding Image -->
+                    <router-link :to="{ name: 'home' }" class="navbar-brand"><img src="/img/slim_logo_grayscale.png" style="height: 32px;margin-top:-5px;"></router-link>
+                </div>
 
-        <v-toolbar dark class="primary">
-            <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-sm-and-up"></v-toolbar-side-icon>
-            <v-toolbar-title>Slim</v-toolbar-title>
-            <v-spacer></v-spacer>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <!-- Left Side Of Navbar -->
 
-            <v-text-field
-                    label="Search..."
-                    single-line
-                    append-icon="search"
-                    dark
-                    hide-details
-                    class="hidden-xs-only"
-                    v-if="user.authenticated"
-            ></v-text-field>
+                    <ul class="nav navbar-nav" v-if="user.authenticated">
+                        <form class="navbar-form navbar-right">
+                            <button type="button" class="btn btn-info">Create</button>
+                        </form>
+                    </ul>
 
-            <v-toolbar-items class="hidden-xs-only">
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right" v-if="!user.authenticated">
+                        <!-- Authentication Links -->
+                        <li><router-link :to="{ name: 'login' }">Login</router-link></li>
+                        <li><router-link :to="{ name: 'register' }">Register</router-link></li>
+                    </ul>
 
-                <v-btn flat v-for="item in items" :key="item.title" v-if="item.needsAuth === user.authenticated" :to="item.link">
-                    <v-icon left>{{ item.icon }}</v-icon>
-                    {{ item.title }}
-                </v-btn>
+                    <!-- Right Side Of Navbar -->
+                    <ul class="nav navbar-nav navbar-right" v-if="user.authenticated">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                <i class="glyphicon glyphicon-cog"></i>
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li class="dropdown-header">Administrator</li>
+                                <li><router-link :to="{ name: 'roles' }">Roles</router-link></li>
+                                <li><router-link :to="{ name: 'permissions' }">Permissions</router-link></li>
+                                <li><router-link :to="{ name: 'teams' }">Teams</router-link></li>
+                                <li><router-link :to="{ name: 'teamRoles' }">Team Roles</router-link></li>
+                            </ul>
+                        </li>
 
-                <v-menu bottom right v-if="user.authenticated">
-                    <v-btn flat slot="activator">
-                        <v-icon left>person</v-icon>
-                        {{ user.data.name }}
-                    </v-btn>
-                    <v-list>
-                        <v-list-tile @click.prevent="signout">
-                            <v-list-tile-title>Logout</v-list-tile-title>
-                        </v-list-tile>
-                    </v-list>
-                </v-menu>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                {{ user.data.name }} <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#" @click.prevent="signout">Logout</a></li>
+                            </ul>
+                        </li>
 
-            </v-toolbar-items>
-        </v-toolbar>
+                    </ul>
+
+                    <form class="navbar-form navbar-right" v-if="user.authenticated">
+                        <div class="form-group">
+                            <input class="form-control" placeholder="Search">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </nav>
 
     </div>
 </template>
@@ -60,18 +76,6 @@
     import { mapGetters, mapActions } from 'vuex'
 
     export default {
-
-        data () {
-            return {
-                drawer: null,
-                items: [
-                    { icon: 'settings', title: 'Settings', needsAuth: true },
-                    { icon: 'face', title: 'Sign up', needsAuth: false, link: 'register' },
-                    { icon: 'lock_open', title: 'Sign in', needsAuth: false, link: 'login' },
-                ],
-                right: null,
-            }
-        },
 
         computed: mapGetters({
             user: 'auth/user'
@@ -85,7 +89,7 @@
 
             signout () {
                 this.logout().then(() => {
-                    this.$router.replace({ name: 'login' })
+                    this.$router.replace({ name: 'home' })
                 })
 
             }

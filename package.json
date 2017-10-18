@@ -28,9 +28,7 @@
         "axios": "^0.15.3",
         "bootstrap-select": "^1.12.4",
         "localforage": "^1.5.0",
-        "mdi": "^2.0.46",
         "vue-bus": "^1.0.0",
-        "vue-router": "^2.7.0",
-        "vuetify": "^0.15.7"
+        "vue-router": "^2.7.0"
     }
 }

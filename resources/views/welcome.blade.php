@@ -9,18 +9,7 @@
     <title>Slim</title>
 
     <!-- Fonts -->
-    <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" type="text/css">
-    <style>
-        input:-webkit-autofill,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:active {
-        -webkit-transition-delay: 9999s;
-        transition-delay: 9999s;
-        }
-    </style>
-    <link href="https://unpkg.com/vuetify/dist/vuetify.min.css" rel="stylesheet">
 
 </head>
     <body>

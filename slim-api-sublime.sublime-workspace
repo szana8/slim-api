@@ -1,0 +1,466 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"Permission",
+				"PermissionTransformer"
+			],
+			[
+				"func",
+				"func\tPHP Method"
+			],
+			[
+				"Re",
+				"RegisterFormRequest"
+			],
+			[
+				"E",
+				"EXECUTE"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "insta",
+		"selected_items":
+		[
+			[
+				"insta",
+				"Package Control: Install Package"
+			],
+			[
+				"githu",
+				"GitHub: Edit (master)"
+			],
+			[
+				"package",
+				"Package Control: Install Package"
+			],
+			[
+				"package in",
+				"Package Control: Install Package"
+			],
+			[
+				"compare ",
+				"Compare with..."
+			],
+			[
+				"Package In",
+				"Package Control: Install Package"
+			],
+			[
+				"Snippet: ",
+				"Snippet: PHP Method"
+			],
+			[
+				"Snippet: PHP",
+				"Snippet: PHP Method"
+			],
+			[
+				"Rename",
+				"ANF: Rename File"
+			],
+			[
+				"Insta",
+				"Package Control: Install Package"
+			],
+			[
+				"Material Theme",
+				"Material Theme: Activate theme"
+			],
+			[
+				"Theme",
+				"Material Theme: Advanced configuration"
+			],
+			[
+				"Package Control: in",
+				"Package Control: Install Package"
+			],
+			[
+				"theme",
+				"Material Theme: Activate theme"
+			]
+		],
+		"width": 496.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/laragon/www/slim-api",
+		"/C/laragon/www/slim-api/app",
+		"/C/laragon/www/slim-api/app/Providers",
+		"/C/laragon/www/slim-api/config"
+	],
+	"file_history":
+	[
+		"/C/laragon/www/slim-api/app/Providers/AppServiceProvider.php",
+		"/C/laragon/www/slim-api/config/app.php",
+		"/C/laragon/www/slim-api/.env",
+		"/C/laragon/www/slim-api/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php",
+		"/C/laragon/www/slim-api/resources/assets/js/components/App.vue",
+		"/C/laragon/www/slim-api/resources/assets/js/components/Loader.vue",
+		"/C/laragon/www/slim-api/resources/assets/js/app/auth/components/Login.vue",
+		"/C/laragon/www/slim-api/resources/assets/js/app/routes.js",
+		"/C/laragon/www/slim-api/resources/assets/js/app/auth/components/Register.vue",
+		"/C/laragon/www/slim-api/resources/assets/js/app/auth/vuex/actions.js",
+		"/C/Users/huszanai/Downloads/actions.js",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp2_code-vue-laravel-spa-vue-laravel-spa.zip/resources/assets/js/app/auth/components/Register.vue",
+		"/C/laragon/www/slim-api/resources/assets/sass/app.scss",
+		"/C/laragon/www/slim-api/node_modules/vuetify/dev/App.vue",
+		"/C/laragon/www/slim-api/resources/views/welcome.blade.php",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ADVPRICE-176/workflow",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ADVPRICE-176/l5745022.dbg",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ADVPRICE-176/l1744023.dbg",
+		"/C/Users/huszanai/OneDrive - National Instruments/Hasznos/Trace/Trace SQL Query.sql",
+		"/C/laragon/www/slim-api/webpack.mix.js",
+		"/C/laragon/www/slim-api/resources/assets/js/bootstrap.js",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ADVPRICE-176/order lines - book order",
+		"/C/laragon/www/slim-api/resources/assets/js/vuex/index.js",
+		"/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (2).sql",
+		"/C/Users/huszanai/Downloads/ni_si_var_order_notes_5.sql",
+		"/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (1).sql",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-vue-laravel-spa-vue-laravel-spa.zip/app/Http/Controllers/Auth/AuthController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-vue-laravel-spa-vue-laravel-spa.zip/app/Http/Requests/FormRequest.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-vue-laravel-spa-vue-laravel-spa.zip/app/Http/Requests/Auth/RegisterFormRequest.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-vue-laravel-spa-vue-laravel-spa.zip/app/Http/Requests/Auth/LoginFormRequest.php",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-717/query.sql",
+		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q3_ooc/2017_Q3_OOC_VAR_ORDER_REPORT_FIX.sh",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Lines in Awaiting Return status booked over 3 months ago.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Lines in Pending pre-billing acceptance status for over a month.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/OSS orders booked more than 3 months ago.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Open service line attached to a closed line.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Open order line linked to closed SO.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/OSS order calibration line  (not linked to SO) that is attached (via Cal DFF - ATTR1 ) to an OE line that has a closed SO.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Open order using inactive order transaction type.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Service Lines in 'Awaiting Invoice Interface - Incomplete Data' Status due to missing service dates.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Six-dash PNs open on orders where all other lines are closed.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Closed service line attached to an open line.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Credit Card orders where the card is expired or not valid.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Lines booked over a month ago and waiting for approval.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Lines booked over x month ago, and still on invoice hold.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Open line with ordered_quantity zero.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Open line with blank price.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/Lines in WF Status NI Post Shipping Updates.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/4.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Materialized_view/ni_entered_orders_over_month.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/2.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/3.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/5.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/6.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/7.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/12.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/13.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/14.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/15.sql",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/16.sql",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/personalization",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/QuotePersonalization",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/ONT_OEXOEORD.ldt",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/TeamController.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Role/CreateRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Permission/UpdateRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Permission/CreateRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Role/DestroyRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Role/UpdateRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/PermissionController.php",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/AdvancedNewFile.sublime-settings",
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/PermissionTransformer.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Http/Controllers/PostController.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/UserController.php",
+		"/C/laragon/www/slim-api/app/Transformers/UserTransformer.php",
+		"/C/laragon/www/slim-api/app/Repositories/RepositoryAbstract.php",
+		"/C/laragon/www/slim-api/app/Transformers/ExceptionTransformer.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Http/Controllers/TopicController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Http/Controllers/PostLikeController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Http/Controllers/UserController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Http/Controllers/Forum/TopicController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Http/Controllers/Forum/SectionController.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Http/Controllers/Forum/PostController.php",
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/Roles/RoleTransformer.php",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/snipetts/Class.sublime-snippet",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/snipetts/Constructor.sublime-snippet",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/snipetts/PHP Method.sublime-snippet",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/snipetts/Protected Method.sublime-snippet",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Controller.php",
+		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/AdvancedNewFile.sublime-settings",
+		"/C/laragon/www/slim-api/composer.json",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Transformers/PostTransformer.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Transformers/TopicTransformer.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Transformers/SectionTransformer.php",
+		"/C/laragon/www/slim-api/routes/api.php",
+		"/C/laragon/www/slim-api/routes/web.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Authorization/CreateRoleRequest.php",
+		"/C/laragon/www/slim-api/vendor/tymon/jwt-auth/src/Exceptions/JWTException.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Policies/PostPolicy.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Http/Requests/StorePostRequest.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/AuthController.php",
+		"/C/laragon/www/slim-api/app/Http/Kernel.php",
+		"/C/laragon/www/slim-api/app/Console/Kernel.php",
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-forum-spa-forum-spa-api.zip/app/Models/User.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/RegisterFormRequest.php",
+		"/C/laragon/www/slim-api/config/jwt.php",
+		"/C/laragon/www/slim-api/vendor/tymon/jwt-auth/src/Commands/JWTGenerateCommand.php",
+		"/C/laragon/www/slim-api/app/User.php",
+		"/C/laragon/www/slim-api/database/migrations/2014_10_12_000000_create_users_table.php",
+		"/C/laragon/www/slim-api/database/migrations/2017_09_14_124025_create_users_table.php",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/AEWSO-1771/2017_Q4_OOC_SEV1_Remove_SR_Notes.sh",
+		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q1_ooc/2017_Q1_SP1_SERIAL_INQUIRY#2.sh",
+		"/C/Users/huszanai/OneDrive - National Instruments/Projects/CRM/GSI - Global Single Instance/CRMH-165654/Migratied Version/serial_inquiry.pkb",
+		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes.sh",
+		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/Util/Deploy/2017/q4_ooc/2017_Q4_CRM_OOC_DROP_NIC_SC_WORKLOAD_DASHBOARD_PKG#18.sh",
+		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/Util/Deploy/2017/q4_ooc/2017_Q4_CRM_OOC_DROP_NIC_SC_WORKLOAD_DASHBOARD_PKG_ROLLBACK#3.sh",
+		"/C/laragon/www/slim_api/composer.json",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_3.log",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_2.log",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_1.log",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_4.log",
+		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes#6.sh",
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-167362/Install Script/2017_Q2_OOC_NIPSU_WORKFLOW_OTS_FIX.sh",
+		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_BAAT_CORE_LIBRARIES.sh"
+	],
+	"find":
+	{
+		"height": 37.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"NI_PRICE_LISTS",
+			"NI_PROD_ATTR_TXN_HDRú",
+			"Query NI_PROD_ATTR_TXN_HDR block",
+			"Query NI_PROD_ATTR_TXN_HDR bloc",
+			"NI_PRICE_LISTS",
+			"NI_PRICE_LISTSSession",
+			"g_migration_group_array",
+			");",
+			"huszanai",
+			"role",
+			"user",
+			"                '",
+			"{\n",
+			"name",
+			"l_limit",
+			"v_s_object_id",
+			"update_hdr_payment",
+			"480577",
+			"CACHE*480577",
+			"CACHE",
+			"480577",
+			"Process_Payments",
+			"message",
+			"Order Payment",
+			"Order",
+			"Payment",
+			"Order Payment",
+			"You are not allowed",
+			"You are not",
+			"end_customer_site_use_id",
+			"sold_to_contact_id",
+			"WFVACXX",
+			"shipto_dtl",
+			"ship_to_address1",
+			"huszanai",
+			"_LdapDC",
+			"_DC",
+			"ni_prod_attr_txn_hdr",
+			"mfc_quote_type",
+			"CURSOR lines IS",
+			"copy_order_delivery",
+			"get_next_value",
+			"copy_order_delivery",
+			"_InsertNewReservation",
+			"SaveReservation",
+			"_ValidateReservDate",
+			"SaveReservation",
+			"_GetPackSlipShipFrom",
+			"_GetPackSlipMain",
+			"GetPackSlipData",
+			"GetPackSlipData\nGetPackSlipData",
+			"GetPackSlipData",
+			"_GetReservationData",
+			"NICompany",
+			"mfc_quote_type",
+			"is_mfc_order",
+			"v_is_mfc_order",
+			"mfc_order_validate",
+			"CRMH-166411",
+			"validate_book_order",
+			"check_wf_for_srvc_validation",
+			"validate_book_order"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"role",
+			"2605228",
+			"ship_to_org_id",
+			"end_customer_site_use_id",
+			"WFVAC10"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 37.0
+	},
+	"input":
+	{
+		"height": 77.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "slim-api-sublime.sublime-project",
+	"replace":
+	{
+		"height": 70.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"urlge",
+				"vendor\\laravel\\framework\\src\\Illuminate\\Routing\\UrlGenerator.php"
+			],
+			[
+				"app.vue",
+				"node_modules\\vuetify\\dev\\App.vue"
+			],
+			[
+				"reposi",
+				"app\\Repositories\\RepositoryAbstract.php"
+			],
+			[
+				"",
+				"untitled"
+			],
+			[
+				"kerne",
+				"app\\Console\\Kernel.php"
+			],
+			[
+				"jwtex",
+				"vendor\\tymon\\jwt-auth\\src\\Exceptions\\JWTException.php"
+			],
+			[
+				"jwtgene",
+				"vendor\\tymon\\jwt-auth\\src\\Commands\\JWTGenerateCommand.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 262.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
