@@ -28,6 +28,7 @@ Vue.component('navigation', require('./components/Navigation.vue'));
 Vue.component('spinner', require('./components/Spinner.vue'));
 Vue.component('icon', require('./components/Icon.vue'));
 Vue.component('loader', require('./components/Loader.vue'));
+Vue.component('data-table', require('./components/DataTable.vue'));
 
 store.dispatch('auth/setToken').then(() => {
     store.dispatch('auth/fetchUser').catch(() => {

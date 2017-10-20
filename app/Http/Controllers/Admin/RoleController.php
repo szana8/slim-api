@@ -142,4 +142,5 @@ class RoleController extends Controller
             return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }
+
 }

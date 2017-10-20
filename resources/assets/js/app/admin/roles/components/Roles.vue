@@ -18,7 +18,7 @@
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="container-fluid">
-                        <role-table></role-table>
+                        <data-table :end-point="{name: 'api/v1/role'}" :table-columns="[{name: 'Name', column: 'name'}, {name: 'Description', column: 'description'}]" :table-class="{name: 'table table-stripped'}" table-name="Roles"></data-table>
                     </div>
                 </div>
             </div>
@@ -31,7 +31,7 @@
 
 <script>
     import { horizontal, search } from '../../common/components'
-    import table from './Table.vue'
+
 
     export default {
 

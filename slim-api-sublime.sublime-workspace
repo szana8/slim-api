@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"load",
+				"loadTableData"
+			],
+			[
+				"table",
+				"tableColmns"
+			],
+			[
 				"Permission",
 				"PermissionTransformer"
 			],
@@ -23,6 +31,23 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "resources/assets/js/components/DataTable.vue",
+			"settings":
+			{
+				"buffer_size": 1592,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "resources/assets/js/app/admin/roles/components/Table.vue",
+			"settings":
+			{
+				"buffer_size": 1691,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -32,7 +57,7 @@
 	"command_palette":
 	{
 		"height": 354.0,
-		"last_filter": "insta",
+		"last_filter": "",
 		"selected_items":
 		[
 			[
@@ -114,11 +139,23 @@
 	[
 		"/C/laragon/www/slim-api",
 		"/C/laragon/www/slim-api/app",
-		"/C/laragon/www/slim-api/app/Providers",
-		"/C/laragon/www/slim-api/config"
+		"/C/laragon/www/slim-api/app/Http",
+		"/C/laragon/www/slim-api/app/Http/Controllers",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin",
+		"/C/laragon/www/slim-api/resources",
+		"/C/laragon/www/slim-api/resources/assets",
+		"/C/laragon/www/slim-api/resources/assets/js",
+		"/C/laragon/www/slim-api/resources/assets/js/app",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles/components",
+		"/C/laragon/www/slim-api/resources/assets/js/components"
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/DataTable/DataTableController.php",
 		"/C/laragon/www/slim-api/app/Providers/AppServiceProvider.php",
 		"/C/laragon/www/slim-api/config/app.php",
 		"/C/laragon/www/slim-api/.env",
@@ -179,7 +216,6 @@
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/14.sql",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/15.sql",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Queryk/16.sql",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/personalization",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/QuotePersonalization",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORAQUOTE-258/ONT_OEXOEORD.ldt",
@@ -194,7 +230,6 @@
 		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/AdvancedNewFile/Default (Windows).sublime-keymap",
 		"/C/Users/huszanai/AppData/Roaming/Sublime Text 3/Packages/User/AdvancedNewFile.sublime-settings",
 		"/C/laragon/www/slim-api/app/Transformers/Authorization/PermissionTransformer.php",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-api-development-with-laravel-api-development-with-laravel.zip/app/Http/Controllers/PostController.php",
 		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/UserController.php",
 		"/C/laragon/www/slim-api/app/Transformers/UserTransformer.php",
@@ -245,8 +280,7 @@
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_1.log",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_4.log",
 		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes#6.sh",
-		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-167362/Install Script/2017_Q2_OOC_NIPSU_WORKFLOW_OTS_FIX.sh",
-		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_BAAT_CORE_LIBRARIES.sh"
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-167362/Install Script/2017_Q2_OOC_NIPSU_WORKFLOW_OTS_FIX.sh"
 	],
 	"find":
 	{
@@ -348,8 +382,67 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "resources/assets/js/components/DataTable.vue",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1592,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1377,
+								1377
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 739.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "resources/assets/js/app/admin/roles/components/Table.vue",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 1691,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1179,
+								1179
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 324.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				}
 			]
 		}
 	],
@@ -458,7 +551,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 262.0,
+	"side_bar_width": 338.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{
