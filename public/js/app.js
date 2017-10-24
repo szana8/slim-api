@@ -33546,6 +33546,10 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
+//
+//
+//
+//
 
 exports.default = {};
 
@@ -36045,11 +36049,17 @@ if (false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', [_c('v-app', [_c('navigation'), _vm._v(" "), _c('loader'), _vm._v(" "), _c('main', [_c('v-container', {
+  return _c('div', [_c('v-app', [_c('navigation'), _vm._v(" "), _c('loader'), _vm._v(" "), _c('main', [_c('v-content', [_c('v-container', {
     attrs: {
-      "fluid": ""
+      "fluid": "",
+      "fill-height": ""
     }
-  }, [_c('router-view')], 1)], 1), _vm._v(" "), _c('v-footer')], 1)], 1)
+  }, [_c('v-layout', {
+    attrs: {
+      "justify-center": "",
+      "align-center": ""
+    }
+  }, [_c('router-view')], 1)], 1)], 1)], 1), _vm._v(" "), _c('v-footer')], 1)], 1)
 },staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
