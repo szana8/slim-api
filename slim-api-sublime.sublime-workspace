@@ -35,7 +35,7 @@
 			"file": "resources/assets/js/components/DataTable.vue",
 			"settings":
 			{
-				"buffer_size": 1592,
+				"buffer_size": 1551,
 				"encoding": "UTF-8",
 				"line_ending": "Windows"
 			}
@@ -153,6 +153,7 @@
 	],
 	"file_history":
 	[
+		"/C/Users/huszanai/AppData/Local/Temp/Temp1_slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680.zip/slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680/resources/assets/js/components/Navigation.vue",
 		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
 		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
 		"/C/laragon/www/slim-api/app/Http/Controllers/DataTable/DataTableController.php",
@@ -279,8 +280,7 @@
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_2.log",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_1.log",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_4.log",
-		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes#6.sh",
-		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-167362/Install Script/2017_Q2_OOC_NIPSU_WORKFLOW_OTS_FIX.sh"
+		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes#6.sh"
 	],
 	"find":
 	{
@@ -391,15 +391,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1592,
+						"buffer_size": 1551,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1377,
-								1377
+								0,
+								0
 							]
 						],
 						"settings":
