@@ -2,11 +2,13 @@
     <div>
         <v-layout column>
             <v-flex xs12 sm4 offset-sm4>
-                <v-card>
-                     <v-card-title primary-title>
-                        <h3>Register</h3>
-                    </v-card-title>
 
+                <v-toolbar color="grey lighten-4">
+                    <v-toolbar-title>Register</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                </v-toolbar>
+
+                <v-card>
                     <v-card-text>
                         <v-form v-model="valid">
                             
@@ -33,6 +35,16 @@
                                     <div class="input-group__error" v-text="errors.password[0]"/>
                                 </div>
                             </div>
+
+                            <v-checkbox
+                                    v-model="checkbox"
+                                    required
+                            >
+                                <div slot="label" @click.stop="checkbox = !checkbox">
+                                    I accept the
+                                    <a href="javascript:;" @click.stop="">user agreement</a>
+                                </div>
+                            </v-checkbox>
 
                         </v-form>
                     </v-card-text>
@@ -62,6 +74,7 @@
                 name: null,
                 email: null,
                 password: null,
+                checkbox: false,
                 errors: []
             }
             
@@ -82,7 +95,7 @@
             }),
 
             submit: function () {
-                
+                window.bus.$emit('loading', true)
                 this.register({
 
                     payload: {
@@ -94,11 +107,11 @@
                     context: this
 
                 }).then((response) => {
-
+                    window.bus.$emit('loading', false)
                    this.$router.replace({ name: 'home' })
 
                 }).catch((error) => {
-
+                    window.bus.$emit('loading', false)
                     console.log(error)
 
                 })
@@ -106,6 +119,8 @@
             },
 
             cancel: function () {
+
+                this.$router.replace({ name: 'login' })
 
             }
 

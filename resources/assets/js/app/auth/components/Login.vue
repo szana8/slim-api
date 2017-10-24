@@ -2,12 +2,13 @@
     <div>
         <v-layout column>
             <v-flex xs12 sm4 offset-sm4>
+
+                <v-toolbar color="grey lighten-4">
+                    <v-toolbar-title>Login</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                </v-toolbar>
+
                 <v-card>
-
-                    <v-card-title primary-title>
-                        <h3 class="headline mb-0">Login</h3>
-                    </v-card-title>
-
                     <v-card-text>
                         <v-form>
                             
@@ -32,8 +33,9 @@
                     </v-card-text>
 
                     <v-card-actions>
+                        <v-btn @click.prevent="register">Register</v-btn>
                         <v-spacer></v-spacer>
-                        <v-btn primary class="white--text" @click.prevent="submit">Login</v-btn>
+                        <v-btn @click.prevent="submit">Login</v-btn>
                     </v-card-actions>
 
                 </v-card>
@@ -90,6 +92,12 @@
                 }).catch((error) => {
                     console.log(error)
                 })
+
+            },
+
+            register: function () {
+
+                this.$router.replace({name: 'register'})
 
             }
 

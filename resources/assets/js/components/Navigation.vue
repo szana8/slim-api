@@ -1,56 +1,42 @@
 <template>
     <div>
-        <v-navigation-drawer temporary v-model="drawer" light overflow absolute>
-            <v-list class="pa-1">
+        <navigation-drawer v-if="user.authenticated"></navigation-drawer>
 
-                <v-list-tile v-for="item in items" v-if="item.needsAuth === user.authenticated" :key="item.title">
-                    <v-list-tile-avatar>
-                        <v-icon left>{{ item.icon }}</v-icon>
-                    </v-list-tile-avatar>
-                    <v-list-tile-content>
-                        <v-list-tile-title>{{ item.title }}</v-list-tile-title>
-                    </v-list-tile-content>
-                </v-list-tile>
-
-            </v-list>
-
-        </v-navigation-drawer>
-
-        <v-toolbar
-                color="grey lighten-4"
-                app
-                clipped-left
-                fixed
-        >
+        <v-toolbar color="grey lighten-4" app clipped-left fixed>
             <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-sm-and-up"></v-toolbar-side-icon>
-            <v-toolbar-title>Slim</v-toolbar-title>
+            <v-toolbar-title style="width: 300px" class="ml-0 pl-3"><img src="img/slim_logo.png" style="filter: grayscale(1); height: 30px;" /></v-toolbar-title>
+
+            <v-text-field solo prepend-icon="search" placeholder="Search" v-if="user.authenticated"></v-text-field>
+
             <v-spacer></v-spacer>
-
-            <v-text-field
-                    label="Search..."
-                    single-line
-                    append-icon="search"
-                    dark
-                    hide-details
-                    class="hidden-xs-only"
-                    v-if="user.authenticated"
-            ></v-text-field>
-
             <v-toolbar-items class="hidden-xs-only">
 
-                <v-btn flat v-for="item in items" :key="item.title" v-if="item.needsAuth === user.authenticated" :to="item.link">
-                    <v-icon left v-if="item.icon">{{ item.icon }}</v-icon>
-                    {{ item.title }}
-                </v-btn>
-
-                <v-menu bottom right v-if="user.authenticated">
+                <v-menu offset-y bottom right v-if="user.authenticated">
                     <v-btn flat slot="activator">
-                        <v-icon left>person</v-icon>
-                        {{ user.data.name }}
+                        <v-avatar class="teal">
+                            <span class="white--text headline">
+                                 {{ user.data.name.charAt(0) }}
+                            </span>
+                        </v-avatar>
+
                     </v-btn>
                     <v-list>
+                        <v-list-tile v-for="(item,i) in list" :key="i" @click.prevent="doAction(item.path)">
+                            <v-list-tile-action v-if="item.icon">
+                                <v-icon>{{ item.icon }}</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title>{{ item.text }}</v-list-tile-title>
+                            </v-list-tile-content>
+                        </v-list-tile>
+                        <v-divider></v-divider>
                         <v-list-tile @click.prevent="signout">
-                            <v-list-tile-title>Logout</v-list-tile-title>
+                            <v-list-tile-action>
+                                <v-icon>keyboard_tab</v-icon>
+                            </v-list-tile-action>
+                            <v-list-tile-content>
+                                <v-list-tile-title>Logout</v-list-tile-title>
+                            </v-list-tile-content>
                         </v-list-tile>
                     </v-list>
                 </v-menu>
@@ -70,11 +56,14 @@
             return {
                 drawer: null,
                 items: [
-                    { icon: 'settings', title: 'Settings', needsAuth: true },
                     { icon: null, title: 'Sign up', needsAuth: false, link: 'register' },
                     { icon: null, title: 'Sign in', needsAuth: false, link: 'login' },
                 ],
                 right: null,
+                list: [
+                    {icon: 'perm_identity', text: 'Profile', path: '/'},
+                    {icon: 'settings', text: 'Settings', path: '/'},
+                ]
             }
         },
 
@@ -90,9 +79,14 @@
 
             signout () {
                 this.logout().then(() => {
+
                     this.$router.replace({ name: 'login' })
                 })
 
+            },
+
+            doAction: function (route_name) {
+                this.$router.replace({ name:  route_name})
             }
 
         }

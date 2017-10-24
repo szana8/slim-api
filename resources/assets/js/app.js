@@ -37,6 +37,7 @@ window.Form = Form;
 Vue.component('app', require('./components/App.vue'));
 Vue.component('loader', require('./components/Loader.vue'));
 Vue.component('navigation', require('./components/Navigation.vue'));
+Vue.component('navigation-drawer', require('./components/NavigationDrawer.vue'));
 
 store.dispatch('auth/setToken').then(() => {
     store.dispatch('auth/fetchUser').catch(() => {
