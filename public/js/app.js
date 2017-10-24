@@ -33194,30 +33194,14 @@ Object.defineProperty(exports, "__esModule", {
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 exports.default = {
     data: function data() {
         return {
             index: null,
-            roles: null
+            items: [],
             //loading: false
+            headers: [{ text: 'Name', value: 'name' }, { text: 'Description', value: 'description' }]
         };
     },
     mounted: function mounted() {
@@ -33227,7 +33211,7 @@ exports.default = {
 
         axios.get('/api/v1/role').then(function (response) {
             console.log(response.data.data);
-            _this.roles = response.data.data;
+            _this.items = response.data.data;
             //this.loading = false
             window.bus.$emit('loading', false);
         });
@@ -35947,34 +35931,25 @@ if (false) {
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('div', {
     staticClass: "col-md-12"
-  }, [_c('table', {
-    staticClass: "table table-condensed"
-  }, [_vm._m(0), _vm._v(" "), _c('tbody', _vm._l((_vm.roles), function(role) {
-    return _c('tr', [_c('td', [_vm._v(_vm._s(role.name))]), _vm._v(" "), _c('td', [_vm._v(_vm._s(role.description))]), _vm._v(" "), _c('td', _vm._l((role.permissions.data), function(permission) {
-      return _c('i', [_vm._v(_vm._s(permission.display_name) + ", ")])
-    })), _vm._v(" "), _c('td'), _vm._v(" "), _c('td')])
-  })), _vm._v(" "), _vm._m(1)])])])
-},staticRenderFns: [function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('thead', [_c('tr', [_c('th', [_vm._v("Roles")]), _vm._v(" "), _c('th', [_vm._v("Description")]), _vm._v(" "), _c('th', {
+  }, [_c('v-data-table', {
+    staticClass: "elevation-1",
     attrs: {
-      "width": "30%"
-    }
-  }, [_vm._v("Permissions")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "width": "30%"
-    }
-  }, [_vm._v("Teams")]), _vm._v(" "), _c('th', {
-    attrs: {
-      "width": "150px"
-    }
-  }, [_vm._v("Actions")])])])
-},function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('tfoot', [_c('tr', [_c('td', {
-    attrs: {
-      "colspan": "5"
-    }
-  })])])
-}]}
+      "headers": _vm.headers,
+      "items": _vm.items,
+      "search": _vm.search
+    },
+    scopedSlots: _vm._u([{
+      key: "items",
+      fn: function(props) {
+        return [_c('td', {
+          staticClass: "text-xs-right"
+        }, [_vm._v("Name")]), _vm._v(" "), _c('td', {
+          staticClass: "text-xs-right"
+        }, [_vm._v("Description")])]
+      }
+    }])
+  })], 1)])
+},staticRenderFns: []}
 module.exports.render._withStripped = true
 if (false) {
   module.hot.accept()
