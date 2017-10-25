@@ -11,6 +11,9 @@
             <td class="text-xs-right">{{ props.item.display_name }}</td>
             <td class="text-xs-right">{{ props.item.description }}</td>
             <td class="text-xs-right">
+                <v-btn flat icon color="primary" v-on:click="assignPermission(props.item.id)">
+                    <v-icon>list</v-icon>
+                </v-btn>
                 <v-btn flat icon color="primary">
                     <v-icon>edit</v-icon>
                 </v-btn>
@@ -34,7 +37,6 @@
 
         data() {
             return {
-                //search: 'test',
                 totalItems: 0,
                 roles: [],
                 items: [],
@@ -87,7 +89,7 @@
             },
 
 
-            getDataFromApi() {
+            getDataFromApi: function () {
                 this.loading = true
                 return new Promise((resolve, reject) => {
                     const {sortBy, descending, page, rowsPerPage} = this.pagination
@@ -130,7 +132,7 @@
                 })
             },
 
-            getRoles() {
+            getRoles: function () {
                 return new Promise((resolve, reject) => {
                     axios.get('/api/v1/role').then((response) => {
                         console.log(response.data.data);
@@ -140,7 +142,7 @@
                 });
             },
 
-            destroy(role) {
+            destroy: function (role) {
 
                 axios.delete('/api/v1/role/' + role).then((response) => {
                     bus.$emit('refreshRoleTable');
@@ -149,6 +151,10 @@
                     reject(error)
                 })
 
+            },
+
+            assignPermission: function (role) {
+                this.$router.replace({ name: 'role-assignment', params: { id: role } })
             }
         }
     }

@@ -1,4 +1,4 @@
-import { Roles } from '../components'
+import { Roles, RoleAssignment } from '../components'
 
 export default [
     {
@@ -8,5 +8,13 @@ export default [
         meta: {
             needsAuth: true
         }
-    }
+    },
+    {
+        path: '/roles/assignment/:id',
+        component: RoleAssignment,
+        name: 'role-assignment',
+        meta: {
+            needsAuth: true
+        }
+    },
 ]
