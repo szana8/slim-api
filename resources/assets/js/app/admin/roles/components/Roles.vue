@@ -1,32 +1,29 @@
 <template>
-    <div>
-        <div class="col-md-9 col-md-offset-3">
-            <div class="page-header">
-                <h1>Global Roles</h1>
-                <footer>Slim enables you to allocate particular people to specific roles in your project. Roles are used when defining other settings, like notifications and permissions.</footer>
-            </div>
-        </div>
+    <v-layout row justify-center>
+        <role-form></role-form>
 
-        <horizontal></horizontal>
-
-        <!-- End horizontal menu -->
-        <div class="col-md-9">
-
-            <search></search>
-
-            <!-- Roles list -->
-            <div class="panel panel-default">
-                <div class="panel-body">
-                    <div class="container-fluid">
-                        <role-table></role-table>
+        <v-flex d-flex xs12 sm12 md12 xl12>
+            <v-card>
+                <v-card-title primary-title>
+                    <div>
+                        <h3 class="headline mb-0">Global Roles</h3>
+                        <div>Slim enables you to allocate particular people to specific roles in your project. Roles are used when defining other settings, like notifications and permissions.</div>
                     </div>
-                </div>
-            </div>
-            <!-- End role list -->
+                    <v-spacer></v-spacer>
+                    <v-text-field append-icon="search" label="Search" single-line hide-details v-model="search"></v-text-field>
+                </v-card-title>
 
-        </div>
+                <role-table :search="search"></role-table>
+            </v-card>
 
-    </div>
+            <v-fab-transition>
+                <v-btn color="primary" key="edit" dark fab fixed bottom right v-model="fab" v-on:click="openRolesForm">
+                    <v-icon>add</v-icon>
+                </v-btn>
+            </v-fab-transition>
+        </v-flex>
+
+    </v-layout>
 </template>
 
 <script>
@@ -35,13 +32,30 @@
 
     export default {
 
+        data () {
+
+            return {
+                search: null,
+                fab: false,
+                hidden: false,
+                tabs: null
+            }
+
+        },
+
         methods: {
 
             setActiveClass (link) {
                 return this.$route.name === link;
+            },
+
+            openRolesForm () {
+                console.log('open');
+                bus.$emit('openRolesForm');
             }
 
         }
+
 
     }
 </script>

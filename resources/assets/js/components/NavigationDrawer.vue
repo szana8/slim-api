@@ -32,7 +32,7 @@
                             </v-subheader>
                         </v-flex>
                         <v-flex xs6 class="text-xs-center">
-                            <a href="#!" class="body-2 black--text">EDIT</a>
+                            <a route="#!" class="body-2 black--text">EDIT</a>
                         </v-flex>
                     </v-layout>
                     <v-list-group v-else-if="item.children" v-model="item.model" no-action>
@@ -46,7 +46,7 @@
                                 </v-list-tile-title>
                             </v-list-tile-content>
                         </v-list-tile>
-                        <v-list-tile v-for="(child, i) in item.children" :key="i" @click.prevent="doAction(child.path)">
+                        <v-list-tile v-for="(child, i) in item.children" :key="i" :to="child.route" exact>
                             <v-list-tile-action v-if="child.icon">
                                 <v-icon>{{ child.icon }}</v-icon>
                             </v-list-tile-action>
@@ -57,7 +57,7 @@
                             </v-list-tile-content>
                         </v-list-tile>
                     </v-list-group>
-                    <v-list-tile v-else @click.prevent="doAction(item.path)">
+                    <v-list-tile v-else :to="item.route" exact>
                         <v-list-tile-action>
                             <v-icon>{{ item.icon }}</v-icon>
                         </v-list-tile-action>
@@ -87,46 +87,45 @@
                     {
                         text: 'Dashboard',
                         icon: 'dashboard',
-                        path: 'home'
+                        route: '/',
                     },
                     {
                         text: 'Settings',
                         icon: 'settings',
                         'icon-alt': 'settings',
-                        path: 'home',
                         model: false,
                         children: [
-                            { text: 'Roles', path: 'roles', icon: 'accessibility' },
-                            { text: 'Permissions', path: 'home', icon: 'accessible'},
-                            { text: 'Teams', path: 'home', icon: 'supervisor_account'},
-                            { text: 'Teams Roles', path: 'home', icon: 'supervisor_account' },
+                            { text: 'Roles', icon: 'accessibility', route: '/roles'},
+                            { text: 'Permissions', icon: 'accessible', route: '/permissions'},
+                            { text: 'Teams', icon: 'supervisor_account', route: '/teams'},
+                            { text: 'Teams Roles', icon: 'supervisor_account', route: '/team-roles'},
                         ]
                     },
                     {
                         text: 'Projects',
-                        path: 'home',
                         model: false,
-                        icon: 'book'
+                        icon: 'book',
+                        route: '/projects',
                     },
                     {
                         text: 'Issues',
-                        path: 'home',
-                        icon: 'assignment'
+                        icon: 'assignment',
+                        route: '/issues',
                     },
                     {
                         text: 'Workflows',
-                        path: 'home',
-                        icon: 'timeline'
+                        icon: 'timeline',
+                        route: '/workflows',
                     },
                     {
                         text: 'Users',
-                        path: 'home',
-                        icon: 'supervisor_account'
+                        icon: 'supervisor_account',
+                        route: '/users',
                     },
                     {
                         text: 'Asset Management',
-                        path: 'home',
-                        icon: 'web_asset'
+                        icon: 'web_asset',
+                        route: '/asset-management',
                     },
                 ],
             }

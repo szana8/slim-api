@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <v-flex d-flex xs12 sm12 md12 xl12>
         <v-layout column>
             <v-flex xs12 sm4 offset-sm4>
 
@@ -42,7 +42,7 @@
             </v-flex>
         </v-layout>
 
-    </div>
+    </v-flex>
 </template>
 
 <script>
