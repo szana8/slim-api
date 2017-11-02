@@ -12,7 +12,7 @@ class TeamSeeder extends Seeder
      */
     public function run()
     {
-        factory(Team::class, 10)->create()->each(function ($t) {
+        factory(Team::class, 1000)->create()->each(function ($t) {
             $t->save();
         });
     }

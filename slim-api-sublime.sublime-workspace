@@ -32,11 +32,10 @@
 	"buffers":
 	[
 		{
-			"file": "resources/assets/js/components/DataTable.vue",
+			"file": "/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (4).sql",
 			"settings":
 			{
-				"buffer_size": 1551,
-				"encoding": "UTF-8",
+				"buffer_size": 14124,
 				"line_ending": "Windows"
 			}
 		},
@@ -44,7 +43,7 @@
 			"file": "resources/assets/js/app/admin/roles/components/Table.vue",
 			"settings":
 			{
-				"buffer_size": 1691,
+				"buffer_size": 4977,
 				"line_ending": "Unix"
 			}
 		}
@@ -137,22 +136,10 @@
 	},
 	"expanded_folders":
 	[
-		"/C/laragon/www/slim-api",
-		"/C/laragon/www/slim-api/app",
-		"/C/laragon/www/slim-api/app/Http",
-		"/C/laragon/www/slim-api/app/Http/Controllers",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin",
-		"/C/laragon/www/slim-api/resources",
-		"/C/laragon/www/slim-api/resources/assets",
-		"/C/laragon/www/slim-api/resources/assets/js",
-		"/C/laragon/www/slim-api/resources/assets/js/app",
-		"/C/laragon/www/slim-api/resources/assets/js/app/admin",
-		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles",
-		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles/components",
-		"/C/laragon/www/slim-api/resources/assets/js/components"
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/resources/assets/js/components/DataTable.vue",
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680.zip/slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680/resources/assets/js/components/Navigation.vue",
 		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
 		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
@@ -279,8 +266,7 @@
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_3.log",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_2.log",
 		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_1.log",
-		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_4.log",
-		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q4/2017_Q4_OOC_SEV1_Remove_SR_Notes#6.sh"
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/CRMH-171618/FRD-issue-lyeoh_part_4.log"
 	],
 	"find":
 	{
@@ -387,27 +373,27 @@
 			[
 				{
 					"buffer": 0,
-					"file": "resources/assets/js/components/DataTable.vue",
+					"file": "/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (4).sql",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1551,
+						"buffer_size": 14124,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								0,
-								0
+								393,
+								393
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/Vue Syntax Highlight/vue.tmLanguage"
+							"syntax": "Packages/SQL/SQL.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 739.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 0,
@@ -419,15 +405,15 @@
 					"semi_transient": true,
 					"settings":
 					{
-						"buffer_size": 1691,
+						"buffer_size": 4977,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1179,
-								1179
+								0,
+								0
 							]
 						],
 						"settings":
