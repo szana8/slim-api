@@ -2,7 +2,7 @@
     <v-dialog v-model="dialog" persistent max-width="500px">
         <v-card>
             <v-card-title>
-                <span class="headline">{{ action }} Team</span>
+                <span class="headline">{{ action }} Permission</span>
             </v-card-title>
             <v-card-text>
                 <v-container grid-list-md>
@@ -62,7 +62,7 @@
 
         mounted() {
 
-            bus.$on('openTeamForm', this.openForm);
+            bus.$on('openPermissionForm', this.openForm);
 
         },
 
@@ -70,8 +70,9 @@
 
             ...mapActions({
 
-                store: 'team/store',
-                update: 'team/update'
+                store: 'permission/store',
+                update: 'permission/update'
+
             }),
 
             openForm: function (team) {
@@ -120,7 +121,7 @@
                         this.description = null
                         this.dialog = false
 
-                        bus.$emit('refreshTeamTable');
+                        bus.$emit('refreshPermissionTable');
                     }).catch((error) => {
                         window.bus.$emit('loading', false)
                         console.log(error)
@@ -141,7 +142,7 @@
                         this.display_name = null
                         this.description = null
                         this.dialog = false
-                        bus.$emit('refreshTeamTable');
+                        bus.$emit('refreshPermissionTable');
                     }).catch((error) => {
                         window.bus.$emit('loading', false)
                         console.log(error)

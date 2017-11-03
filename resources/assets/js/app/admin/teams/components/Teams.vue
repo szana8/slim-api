@@ -5,9 +5,9 @@
         <v-flex d-flex xs12 sm12 md12 xl12>
             <v-card class="mb-5">
                 <v-card-title primary-title>
-                    <h3 class="headline mb-0">Teams</h3>
                     <div>
-                        Portfolio for Slim allows you to add Slim applications users as team members. You can also work with virtual users that are placeholders to play with what-if scenarios such as, adding a new hire to your team. In your plan you can create new teams and configure them by choosing their scheduling methodology and assigning them tasks. Teams can be plan-specific or shared across plans.npm run dev
+                        <h3 class="headline mb-0">Teams</h3>
+                        Portfolio for Slim allows you to add Slim applications users as team members. You can also work with virtual users that are placeholders to play with what-if scenarios such as, adding a new hire to your team. In your plan you can create new teams and configure them by choosing their scheduling methodology and assigning them tasks. Teams can be plan-specific or shared across plans.
                     </div>
                     <v-spacer></v-spacer>
                     <v-text-field append-icon="search" label="Search" single-line hide-details v-model="search"></v-text-field>

@@ -1,29 +1,27 @@
 <template>
-    <v-data-table
-            :headers="headers"
-            :items="items"
-            :search="search"
-            :loading="loading"
-            class="elevation-1"
-            :pagination.sync="pagination"
-    >
-        <template slot="items" slot-scope="props">
-            <td>{{ props.item.name }}</td>
-            <td class="text-xs-right">{{ props.item.display_name }}</td>
-            <td class="text-xs-right">{{ props.item.description }}</td>
-            <td class="text-xs-right">
-                <v-btn flat icon color="primary" v-on:click="assignPermission(props.item.id)">
-                    <v-icon>list</v-icon>
-                </v-btn>
-                <v-btn flat icon color="primary">
-                    <v-icon>edit</v-icon>
-                </v-btn>
-                <v-btn flat icon color="error" v-on:click="destroy(props.item.id)">
-                    <v-icon>delete</v-icon>
-                </v-btn>
-            </td>
-        </template>
-    </v-data-table>
+    <div>
+        <v-data-table
+                :headers="headers"
+                :items="items"
+                :search="search"
+                :loading="loading"
+                class="elevation-1"
+        >
+            <template slot="items" slot-scope="props">
+                <td>{{ props.item.name }}</td>
+                <td class="text-xs-right">{{ props.item.display_name }}</td>
+                <td class="text-xs-right">{{ props.item.description }}</td>
+                <td class="text-xs-right">
+                    <v-btn flat icon color="primary" @click="edit(props.item.id)">
+                        <v-icon>edit</v-icon>
+                    </v-btn>
+                    <v-btn flat icon color="error" v-on:click="destroy(props.item.id)">
+                        <v-icon>delete</v-icon>
+                    </v-btn>
+                </td>
+            </template>
+        </v-data-table>
+    </div>
 </template>
 
 <script>
@@ -35,11 +33,12 @@
 
         data() {
             return {
-                totalItems: 0,
-                roles: [],
+                teams: [],
                 items: [],
                 loading: true,
-                pagination: {},
+                pagination: {
+
+                },
                 headers: [
                     {text: 'Name', value: 'name', align: 'left'},
                     {text: 'Display Name', value: 'display_name'},
@@ -55,7 +54,6 @@
                     this.getDataFromApi()
                         .then(data => {
                             this.items = data.items
-                            this.totalItems = data.total
                         })
                 },
                 deep: true
@@ -66,14 +64,15 @@
 
             this.getData();
 
-            bus.$on('refreshRoleTable', this.getData);
+            bus.$on('refreshPermissionTable', this.getData);
 
         },
+
         methods: {
 
             ...mapActions({
 
-                destroy: 'roles/destroy',
+                destroy: 'permission/destroy',
 
             }),
 
@@ -81,19 +80,17 @@
 
                 this.getDataFromApi().then(data => {
                     this.items = data.items
-                    this.totalItems = data.total
                 })
 
             },
-
 
             getDataFromApi: function () {
                 this.loading = true
                 return new Promise((resolve, reject) => {
                     const {sortBy, descending, page, rowsPerPage} = this.pagination
 
-                    this.getRoles().then(() => {
-                        let items = this.roles;
+                    this.getTeams().then(() => {
+                        let items = this.teams;
                         const total = items.length
 
                         if (this.pagination.sortBy) {
@@ -130,20 +127,19 @@
                 })
             },
 
-            getRoles: function () {
+            getTeams: function () {
                 return new Promise((resolve, reject) => {
-                    axios.get('/api/v1/role').then((response) => {
-                        console.log(response.data.data);
-                        this.roles = response.data.data;
+                    axios.get('/api/v1/permission').then((response) => {
+                        this.teams = response.data.data;
                         resolve()
                     });
                 });
             },
 
-            destroy: function (role) {
+            destroy: function (team) {
 
-                axios.delete('/api/v1/role/' + role).then((response) => {
-                    bus.$emit('refreshRoleTable');
+                axios.delete('/api/v1/permission/' + team).then((response) => {
+                    bus.$emit('refreshPermissionTable');
                 }).catch((error) => {
                     context.errors = error.response.data.errors
                     reject(error)
@@ -151,8 +147,15 @@
 
             },
 
-            assignPermission: function (role) {
-                this.$router.replace({ name: 'role-assignment', params: { id: role } })
+            edit: function (permission) {
+
+                axios.get('/api/v1/permission/' + permission).then((response) => {
+                    bus.$emit('openPermissionForm', response.data.data);
+                }).catch((error) => {
+                    context.errors = error.response.data.errors
+                    reject(error)
+                })
+
             }
         }
     }

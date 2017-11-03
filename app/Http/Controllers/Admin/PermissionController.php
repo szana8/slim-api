@@ -44,11 +44,11 @@ class PermissionController extends Controller
     {
         $permissions = $this->permission->withCriteria([
             new EagerLoad(['roles', 'users']),
-        ])->search($request->search)->paginate();
+        ])->search($request->search)->get();
 
         return fractal()->collection($permissions, new PermissionTransformer())
                         ->includeRoles()
-                        ->paginateWith(new IlluminatePaginatorAdapter($permissions))
+                        //->paginateWith(new IlluminatePaginatorAdapter($permissions))
                         ->toArray();
     }
 
