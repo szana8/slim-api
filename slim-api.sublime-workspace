@@ -132,6 +132,9 @@
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/resources/assets/js/app.js",
+		"/C/laragon/www/slim-api/resources/views/welcome.blade.php",
+		"/C/laragon/www/slim-api/.env",
 		"/C/laragon/www/slim-vue/src/helpers/index.js",
 		"/C/laragon/www/slim-vue/src/app/admin/roles/routes/index.js",
 		"/C/laragon/www/slim-api/composer.json",
@@ -159,10 +162,8 @@
 		"/C/laragon/www/slim-api/resources/assets/js/app/admin/common/components/Horizontal.vue",
 		"/C/laragon/www/slim-vue/src/app/admin/permissions/routes/index.js",
 		"/C/laragon/www/slim-vue/src/app/admin/roles/components/index.js",
-		"/C/laragon/www/slim-api/resources/assets/js/app.js",
 		"/C/laragon/www/slim-api/resources/assets/js/components/App.vue",
 		"/C/laragon/www/slim-vue/src/main.js",
-		"/C/laragon/www/slim-api/resources/views/welcome.blade.php",
 		"/C/laragon/www/slim-vue/src/components/NavigationDrawer.vue",
 		"/C/laragon/www/slim-api/resources/assets/js/components/Loader.vue",
 		"/C/laragon/www/slim-vue/src/components/Loader.vue",
@@ -257,7 +258,6 @@
 		"/C/laragon/www/slim-api/app/Http/Controllers/DataTable/DataTableController.php",
 		"/C/laragon/www/slim-api/app/Providers/AppServiceProvider.php",
 		"/C/laragon/www/slim-api/config/app.php",
-		"/C/laragon/www/slim-api/.env",
 		"/C/laragon/www/slim-api/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php",
 		"/C/laragon/www/slim-api/resources/assets/js/app/auth/components/Login.vue"
 	],
