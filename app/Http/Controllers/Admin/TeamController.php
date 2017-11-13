@@ -40,11 +40,11 @@ class TeamController extends Controller
      */
     public function index(AccessRequest $request)
     {
-        $teams = $this->team->search($request->search)->paginate();
+        $teams = $this->team->search($request->search)->get();
 
         return fractal()->collection($teams, new TeamTransformer())
                         ->includeRoles()
-                        ->paginateWith(new IlluminatePaginatorAdapter($teams))
+                        //->paginateWith(new IlluminatePaginatorAdapter($teams))
                         ->toArray();
     }
 

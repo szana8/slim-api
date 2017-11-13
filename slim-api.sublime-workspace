@@ -39,6 +39,15 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "app/Http/Controllers/Admin/TeamController.php",
+			"settings":
+			{
+				"buffer_size": 3611,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -128,16 +137,33 @@
 	},
 	"expanded_folders":
 	[
-		"/C/laragon/www/slim-api"
+		"/C/laragon/www/slim-api",
+		"/C/laragon/www/slim-api/app",
+		"/C/laragon/www/slim-api/app/Http",
+		"/C/laragon/www/slim-api/app/Http/Controllers",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin",
+		"/C/laragon/www/slim-api/resources",
+		"/C/laragon/www/slim-api/resources/assets",
+		"/C/laragon/www/slim-api/resources/assets/js",
+		"/C/laragon/www/slim-api/resources/assets/js/app",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles",
+		"/C/laragon/www/slim-api/resources/assets/js/app/admin/roles/components"
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/TeamRoleTransformer.php",
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/PermissionTransformer.php",
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/TeamTransformer.php",
+		"/C/laragon/www/slim-api/app/Transformers/Authorization/RoleTransformer.php",
+		"/C/laragon/www/slim-api/config/app.php",
+		"/C/laragon/www/slim-api/app/Http/Kernel.php",
+		"/C/laragon/www/slim-api/composer.json",
 		"/C/laragon/www/slim-api/resources/assets/js/app.js",
 		"/C/laragon/www/slim-api/resources/views/welcome.blade.php",
 		"/C/laragon/www/slim-api/.env",
 		"/C/laragon/www/slim-vue/src/helpers/index.js",
 		"/C/laragon/www/slim-vue/src/app/admin/roles/routes/index.js",
-		"/C/laragon/www/slim-api/composer.json",
 		"/C/laragon/www/slim-api/bootstrap/app.php",
 		"/C/laragon/www/slim-vue/src/router/index.js",
 		"/C/laragon/www/slim-vue/src/App.vue",
@@ -253,13 +279,7 @@
 		"/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (4).sql",
 		"/C/laragon/www/slim-api/resources/assets/js/components/DataTable.vue",
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680.zip/slim-api-4d5ac57d84b62d08ff318c2ddbb953f75f8bd680/resources/assets/js/components/Navigation.vue",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/ProfileController.php",
-		"/C/laragon/www/slim-api/app/Http/Controllers/DataTable/DataTableController.php",
-		"/C/laragon/www/slim-api/app/Providers/AppServiceProvider.php",
-		"/C/laragon/www/slim-api/config/app.php",
-		"/C/laragon/www/slim-api/vendor/laravel/framework/src/Illuminate/Routing/UrlGenerator.php",
-		"/C/laragon/www/slim-api/resources/assets/js/app/auth/components/Login.vue"
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/RoleController.php"
 	],
 	"find":
 	{
@@ -294,8 +314,39 @@
 	"groups":
 	[
 		{
+			"selected": 0,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "app/Http/Controllers/Admin/TeamController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3611,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1004,
+								1004
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 830.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				}
 			]
 		}
 	],

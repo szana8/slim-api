@@ -17,6 +17,7 @@ class TeamTransformer extends TransformerAbstract
     public function transform(Team $team)
     {
         return [
+            'id'           => $team->id,
             'name'         => $team->name,
             'display_name' => $team->display_name,
             'description'  => $team->description,
