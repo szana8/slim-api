@@ -70,7 +70,7 @@ class PermissionController extends Controller
 
             return $this->show($permission->id);
         } catch (\Exception $e) {
-            return fractal()->item($e, new ExceptionTransformer())->toArray();
+            return fractal()->item($request->all, new ExceptionTransformer())->toArray();
         }
     }
 

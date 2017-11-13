@@ -34,34 +34,34 @@ Route::middleware('api')->prefix('v1')->group(function () {
     Route::namespace('Admin')->middleware('jwt.auth')->group(function () {
 
         // Users Routes
-        Route::resource('user', 'UserController', ['except' => [
+        Route::resource('users', 'UserController', ['except' => [
             'create', 'edit',
         ]]);
 
         // Roles Routes
-        Route::resource('role', 'RoleController', ['except' => [
+        Route::resource('roles', 'RoleController', ['except' => [
             'create', 'edit',
         ]]);
 
         // Permission Routes
-        Route::resource('permission', 'PermissionController', ['except' => [
+        Route::resource('permissions', 'PermissionController', ['except' => [
             'create', 'edit',
         ]]);
 
         // Team Routes
-        Route::resource('team', 'TeamController', [
+        Route::resource('teams', 'TeamController', [
             'except' => [
                 'create', 'edit',
         ]]);
 
         // Team Role Routes
-        Route::resource('team-role', 'TeamRolesController', ['except' => [
+        Route::resource('team-roles', 'TeamRolesController', ['except' => [
                 'create', 'edit',
         ]]);
         Route::get('team-role/{user}/{team}', 'TeamRolesController@show');
 
         // System Routes
-        Route::resource('setting', 'GeneralSettingController', ['except' => [
+        Route::resource('settings', 'GeneralSettingController', ['except' => [
             'create', 'edit',
         ]]);
 
