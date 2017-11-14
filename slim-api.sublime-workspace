@@ -130,16 +130,22 @@
 	[
 		"/C/laragon/www/slim-api",
 		"/C/laragon/www/slim-api/app",
+		"/C/laragon/www/slim-api/app/Http",
+		"/C/laragon/www/slim-api/app/Http/Controllers",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin",
+		"/C/laragon/www/slim-api/app/Http/Requests",
+		"/C/laragon/www/slim-api/app/Http/Requests/Role",
 		"/C/laragon/www/slim-api/config",
-		"/C/laragon/www/slim-api/routes"
+		"/C/laragon/www/slim-api/resources"
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/TeamController.php",
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/PermissionController.php",
+		"/C/laragon/www/slim-api/app/Http/Requests/Role/UpdateRequest.php",
 		"/C/laragon/www/slim-api/routes/api.php",
 		"/C/laragon/www/slim-api/config/app.php",
 		"/C/laragon/www/slim-api/config/cors.php",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/TeamController.php",
-		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/PermissionController.php",
 		"/C/laragon/www/slim-api/app/Transformers/Authorization/TeamRoleTransformer.php",
 		"/C/laragon/www/slim-api/app/Transformers/Authorization/PermissionTransformer.php",
 		"/C/laragon/www/slim-api/app/Transformers/Authorization/TeamTransformer.php",
@@ -261,8 +267,7 @@
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-laravel-datatables-laravel-datatables.zip/app/Http/Controllers/HomeController.php",
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-laravel-datatables-laravel-datatables.zip/app/Http/Controllers/Controller.php",
 		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/deploy/2017/q3_ooc/2017_Q3_OOC_VAR_ORDER_REPORT_FIX.sh",
-		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/OSS order calibration line  (not linked to SO) that is attached (via Cal DFF - ATTR1 ) to an OE line that has a closed SO.sql",
-		"/C/Users/huszanai/Downloads/ni_si_var_order_notes_5 (5).sql"
+		"/C/Users/huszanai/OneDrive - National Instruments/Jira Tickets/CRM/ORDERS-737/Views/OSS order calibration line  (not linked to SO) that is attached (via Cal DFF - ATTR1 ) to an OE line that has a closed SO.sql"
 	],
 	"find":
 	{

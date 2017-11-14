@@ -19,7 +19,7 @@ class UpdateRequest extends FormRequest
      *
      * @var array
      */
-    protected $permission = ['update-role'];
+    protected $permissions = ['update-role'];
 
     /**
      * Determine if the user is authorized to make this request.
