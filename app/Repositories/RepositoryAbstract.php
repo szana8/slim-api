@@ -247,4 +247,13 @@ abstract class RepositoryAbstract implements RepositoryInterface, CriteriaInterf
 
         return app()->make($this->entity());
     }
+
+    /**
+     * [distinct description]
+     * @return [type] [description]
+     */
+    protected function distinct()
+    {
+        return $this->entity->distinct();
+    }
 }

@@ -53,8 +53,10 @@ class TeamRolesController extends Controller
             new EagerLoad(['users', 'team.users']),
         ])->search($request->searchTeamRoles)->get();
 
-        return fractal()->collection($teamRoles, new RoleTransformer())
-                        ->paginateWith(new IlluminatePaginatorAdapter($teamRoles))
+        return fractal()->collection($teamRoles, new TeamRoleTransformer())
+                        ->includeUser()
+                        ->includeTeam()
+                        //->paginateWith(new IlluminatePaginatorAdapter($teamRoles))
                         ->toArray();
     }
 
@@ -95,9 +97,10 @@ class TeamRolesController extends Controller
 
             return fractal()->collection($teamRoles, new TeamRoleTransformer())
                             ->includeTeam()
-                            ->includeUser()
+                            //->includeUser()
                             ->toArray();
-        } catch (\Exception $e) {
+        } 
+        catch (\Exception $e) {
             return fractal()->item($e, new ExceptionTransformer())->toArray();
         }
     }

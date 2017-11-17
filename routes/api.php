@@ -58,7 +58,7 @@ Route::middleware('api')->prefix('v1')->group(function () {
         Route::resource('team-roles', 'TeamRolesController', ['except' => [
                 'create', 'edit',
         ]]);
-        Route::get('team-role/{user}/{team}', 'TeamRolesController@show');
+        Route::get('team-role/{user}/{role}', 'TeamRolesController@show');
 
         // System Routes
         Route::resource('settings', 'GeneralSettingController', ['except' => [

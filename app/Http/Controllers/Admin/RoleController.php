@@ -118,7 +118,7 @@ class RoleController extends Controller
             return $this->show($role->id);
         }
         catch (\Exception $e) {
-            return fractal()->item($e, new ExceptionTransformer())->toArray();
+            return fractal()->item($request->permissions, new ExceptionTransformer())->toArray();
         }
     }
 
