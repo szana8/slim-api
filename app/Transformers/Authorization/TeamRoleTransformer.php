@@ -53,6 +53,6 @@ class TeamRoleTransformer extends TransformerAbstract
      */
     public function includeUser(Role $role)
     {
-        return $this->collection($role->users, new UserTransformer());
+        return $this->collection($role->users->unique('name'), new UserTransformer());
     }
 }

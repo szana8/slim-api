@@ -39,15 +39,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "app/Http/Controllers/Admin/TeamRolesController.php",
-			"settings":
-			{
-				"buffer_size": 3953,
-				"encoding": "UTF-8",
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -137,11 +128,10 @@
 	},
 	"expanded_folders":
 	[
-		"/C/laragon/www/slim-api",
-		"/C/laragon/www/slim-api/resources"
 	],
 	"file_history":
 	[
+		"/C/laragon/www/slim-api/app/Http/Controllers/Admin/TeamRolesController.php",
 		"/C/laragon/www/slim-api/app/Eloquent/Admin/Role.php",
 		"/C/laragon/www/slim-api/app/Repositories/RepositoryAbstract.php",
 		"/C/laragon/www/slim-api/routes/api.php",
@@ -268,8 +258,7 @@
 		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/db_objects/apps/views/ni_pmdm_bookings_class_pn_v#5.sql",
 		"/C/Users/huszanai/AppData/Local/Temp/Temp1_code-laravel-datatables-laravel-datatables.zip/app/Http/Controllers/DataTable/DataTableController.php",
 		"/C/Users/huszanai/AppData/Local/Temp/p4v/HUDEB606345_perforce_1666/IT/main/code/apps/oracle_apps/ebiz/db_objects/ni/snapshots/ni_pmdm_categorizations_mv#1.sql",
-		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/db_objects/apps/views/ams_act_delivery_methods_mv_log.sql",
-		"/C/P4/IT/main/code/apps/oracle_dba/tnsnames/tnsnames.ora"
+		"/C/P4/IT/main/code/apps/oracle_apps/ebiz/db_objects/apps/views/ams_act_delivery_methods_mv_log.sql"
 	],
 	"find":
 	{
@@ -304,39 +293,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "app/Http/Controllers/Admin/TeamRolesController.php",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3953,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1604,
-								1604
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/PHP/PHP.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 1131.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
